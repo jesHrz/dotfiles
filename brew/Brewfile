@@ -1,0 +1,42 @@
+tap "beeftornado/rmtree"
+tap "homebrew/bundle"
+tap "homebrew/cask", "https://mirrors.ustc.edu.cn/homebrew-cask.git"
+tap "homebrew/core", "https://mirrors.ustc.edu.cn/homebrew-core.git"
+tap "homebrew/services"
+tap "nativeos/i386-elf-toolchain"
+tap "riscv/riscv"
+# Archival front-end
+brew "atool"
+# Core application library for C
+brew "glib"
+# Cross-platform make
+brew "cmake"
+# GNU debugger
+brew "gdb"
+# Platform built on V8 to build network applications
+brew "node"
+# Platform built on V8 to build network applications
+brew "node@12"
+# Open source computer vision library
+brew "opencv@3"
+# Swiss-army knife of markup format conversion
+brew "pandoc"
+# Emulator for x86 and PowerPC
+brew "qemu"
+# Programatically correct mistyped console commands
+brew "thefuck"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Extract, view, and test RAR archives
+brew "unrar"
+# Vi 'workalike' with many additional features
+brew "vim", link: false
+# Internet file retriever
+brew "wget"
+cask "aria2gui"
+cask "docker"
+cask "dozer"
+cask "iterm2"
+cask "mos"
+cask "motrix"
+cask "skim"
