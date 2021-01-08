@@ -1,0 +1,93 @@
+{
+	"enable_mathjax": true,
+	"js": {
+        "markdown": [
+            "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js",
+            "res://MarkdownPreview/js/math_config.js"
+        ]
+    },
+	"markdown_extensions": [
+        // Python Markdown Extra with SuperFences.
+        // You can't include "extra" and "superfences"
+        // as "fenced_code" can not be included with "superfences",
+        // so we include the pieces separately.
+        "markdown.extensions.footnotes",
+        "markdown.extensions.attr_list",
+        "markdown.extensions.def_list",
+        "markdown.extensions.tables",
+        "markdown.extensions.abbr",
+        "pymdownx.betterem",
+        {
+            "markdown.extensions.codehilite": {
+                "guess_lang": false
+            }
+        },
+        // Extra's Markdown parsing in raw HTML cannot be
+        // included by itself, but "pymdownx" exposes it so we can.
+        "pymdownx.extrarawhtml",
+
+        // More default Python Markdown extensions
+        {
+            "markdown.extensions.toc":
+            {
+                "permalink": "\ue157"
+            }
+        },
+        "markdown.extensions.meta",
+        "markdown.extensions.sane_lists",
+        "markdown.extensions.smarty",
+        "markdown.extensions.wikilinks",
+        "markdown.extensions.admonition",
+
+        // PyMdown extensions that help give a GitHub-ish feel
+        {
+            "pymdownx.superfences": { // Nested fences and UML support
+                "custom_fences": [
+                    {
+                        "name": "flow",
+                        "class": "uml-flowchart",
+                        "format": {"!!python/name": "pymdownx.superfences.fence_code_format"}
+                    },
+                    {
+                        "name": "sequence",
+                        "class": "uml-sequence-diagram",
+                        "format": {"!!python/name": "pymdownx.superfences.fence_code_format"}
+                    }
+                ]
+            }
+        },
+        {
+            "pymdownx.magiclink": {   // Auto linkify URLs and email addresses
+                "repo_url_shortener": true,
+                "repo_url_shorthand": true
+            }
+        },
+        "pymdownx.tasklist",     // Task lists
+        {
+            "pymdownx.tilde": {  // Provide ~~delete~~
+                "subscript": false
+            }
+        },
+        {
+            "pymdownx.emoji": {  // Provide GitHub's emojis
+                "emoji_index": {"!!python/name": "pymdownx.emoji.gemoji"},
+                "emoji_generator": {"!!python/name": "pymdownx.emoji.to_png"},
+                "alt": "short",
+                "options": {
+                    "attributes": {
+                        "align": "absmiddle",
+                        "height": "20px",
+                        "width": "20px"
+                    },
+                    "image_path": "https://assets-cdn.github.com/images/icons/emoji/unicode/",
+                    "non_standard_image_path": "https://assets-cdn.github.com/images/icons/emoji/"
+                }
+            }
+        },
+        {
+        	"pymdownx.arithmatex": { 
+        		"generic": true 
+        	}
+        }
+    ],
+}

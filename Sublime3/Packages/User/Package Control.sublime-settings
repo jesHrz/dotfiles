@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"ayu",
+		"Codecs33",
+		"ConvertToUTF8",
+		"CoolFormat",
+		"Dracula Color Scheme",
+		"HexViewer",
+		"LaTeX-cwl",
+		"LaTeXTools",
+		"LiveReload",
+		"MarkdownEditing",
+		"MarkdownPreview",
+		"MarkdownTOC",
+		"MasmAssembly",
+		"Package Control",
+		"SideBarEnhancements",
+		"Table Editor",
+		"Terminal",
+		"Vintage Escape"
+	]
+}

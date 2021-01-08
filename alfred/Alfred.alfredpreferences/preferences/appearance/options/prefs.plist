@@ -4,7 +4,15 @@
 <dict>
 	<key>hidehat</key>
 	<true/>
+	<key>hideshortcuts</key>
+	<true/>
 	<key>nativedarkmode</key>
 	<true/>
+	<key>saveposition</key>
+	<true/>
+	<key>showOnScreen</key>
+	<integer>1</integer>
+	<key>visibleresults</key>
+	<integer>5</integer>
 </dict>
 </plist>

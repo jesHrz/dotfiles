@@ -1,0 +1,5 @@
+[
+	{ "keys": ["super+r"], "command": "build" },
+	{ "keys": ["super+ctrl+forward_slash"], "command": "coolformat", "args": {"action": "quickFormat"} },
+	{ "keys": ["super+ctrl+shift+forward_slash"], "command": "coolformat", "args": {"action": "selectedFormat"} },
+]

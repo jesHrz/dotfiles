@@ -4,5 +4,11 @@
 <dict>
 	<key>ejectKeywordEnabled</key>
 	<true/>
+	<key>emptytrashConfirm</key>
+	<true/>
+	<key>restartConfirm</key>
+	<true/>
+	<key>shutdownConfirm</key>
+	<true/>
 </dict>
 </plist>

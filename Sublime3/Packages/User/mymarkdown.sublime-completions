@@ -1,0 +1,23 @@
+{
+    "scope": "text.html.markdown.multimarkdown",
+
+    "completions":
+    [
+      { "trigger": "mdh1", "contents": "# ${1:Heading1} #\n\n${2:Next Line}"},
+      { "trigger": "mdh2", "contents": "## ${1:Heading2} ##\n\n${2:Next Line}"},
+      { "trigger": "mdh3", "contents": "### ${1:Heading3} ###\n\n${2:Next Line}"},
+      { "trigger": "mdh4", "contents": "#### ${1:Heading4} ####\n\n${2:Next Line}"},
+      { "trigger": "mdh5", "contents": "##### ${1:Heading5} #####\n\n${2:Next Line}"},
+      { "trigger": "mdh6", "contents": "###### ${1:Heading6} ######\n\n${2:Next Line}"},
+      { "trigger": "mdb", "contents": "**${1:Bold Text}**${2:}"},
+      { "trigger": "mdi", "contents": "*${1:Italic Text}*${2:}"},
+      { "trigger": "mdbq", "contents": "> ${1:Blockquote Text}\n\n${2:Next Line}"},
+      { "trigger": "mdhr", "contents": "***\n${1:Next Line}"},
+      { "trigger": "mdic", "contents": "` ${1:Code} `"},
+      { "trigger": "mdbc", "contents": "```\n${1:Code}\n```\n\n${2:Next Line}"},
+      { "trigger": "mda", "contents": "[${1:Website}](${2:URL})"},
+      { "trigger": "mdimg", "contents": "![${1:Alternate Text}](${2:URL})\n\n${3:Next Line}"},
+      { "trigger": "mdol", "contents": "1. ${1:Ordered List 1}\n1. ${2:Ordered List 2}\n1. ${3:Ordered List 3}\n\n${4:Next Line}"},
+      { "trigger": "mdul", "contents": "- ${1:Unordered List 1}\n- ${2:Unordered List 2}\n- ${3:Unordered List 3}\n\n${4:Next Line}"},
+    ]
+}

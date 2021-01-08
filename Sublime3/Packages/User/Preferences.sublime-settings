@@ -1,0 +1,22 @@
+{
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": "\\",
+			"selector": "text.tex.latex"
+		}
+	],
+	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
+	"font_face": "Roboto Mono",
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Markdown"
+	],
+	"theme": "Default.sublime-theme",
+	"ui_separator": true
+}
