@@ -49,5 +49,7 @@
         " with parameters {q}  
     end if  
 end alfred_script</string>
+	<key>prefix</key>
+	<integer>1</integer>
 </dict>
 </plist>
