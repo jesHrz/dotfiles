@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 "./install.py --clangd-competer --rust-completer
 Plug 'ycm-core/YouCompleteMe'
 

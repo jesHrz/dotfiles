@@ -82,6 +82,11 @@ let g:ycm_filetype_whitelist = {
 let g:ycm_clangd_binary_path = '/usr/local/opt/llvm/bin/clangd'
 "------------------------------
 
+"----------- Commentary ----------
+autocmd FileType python,shell set commentstring=#\ %s
+autocmd FileType java,c,cpp,rust set commentstring=//\ %s
+autocmd FileType vim set commentstring=\"\ %s
+"---------------------------------
 
 "----------- Rainbow ----------
 let g:rainbow_active=1

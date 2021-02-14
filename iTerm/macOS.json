@@ -40,7 +40,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0
   },
-  "Rows" : 25,
+  "Rows" : 30,
   "Default Bookmark" : "No",
   "Right Option Key Sends" : 0,
   "Cursor Guide Color" : {
@@ -101,8 +101,9 @@
     "Alpha Component" : 1,
     "Green Component" : 0.13333334028720856
   },
-  "Columns" : 80,
+  "Columns" : 100,
   "Idle Code" : 0,
+  "Hide After Opening" : false,
   "Ansi 13 Color" : {
     "Red Component" : 0.78039216995239258,
     "Color Space" : "sRGB",
