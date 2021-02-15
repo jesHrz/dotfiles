@@ -3,7 +3,7 @@ set fileencodings=utf-8,gb2312,gb18030,gbk
 
 source ~/.vim/bundles.vim
 
-"-------------- Material---------------
+"----------------- Theme -------------------
 syntax on
 syntax enable
 if has('termguicolors')
@@ -11,7 +11,7 @@ if has('termguicolors')
 endif
 let g:material_theme_style='ocean-community'
 colorscheme material
-"---------------------------------------------
+"-------------------------------------------
 
 au WinLeave * set nocursorline
 au WinEnter * set cursorline
@@ -58,8 +58,36 @@ if has('gui_running')
     set lines=40
 endif
 
+"---------- Key Map -----------
+let mapleader="<space>"
+imap jj <Esc>
+nmap <leader>d dd
+"------------------------------
 
-"------- YouCompleteMe --------
+"--------- tab switch ---------
+map <M-t> :tabnew 
+map <M-0> :tablast<CR>
+map <M-1> 1gt
+map <M-2> 2gt
+map <M-3> 3gt
+map <M-4> 4gt
+map <M-5> 5gt
+map <M-6> 6gt
+map <M-7> 7gt
+map <M-8> 8gt
+map <M-9> 9gt
+"------------------------------
+
+"-------- typo command --------
+:command W w
+:command WQ wq
+:command Wq wq
+:command Q q
+:command Qa qa
+:command QA qa
+"------------------------------
+
+"-------- YouCompleteMe ----------
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
@@ -80,7 +108,7 @@ let g:ycm_filetype_whitelist = {
 \ }
 " your cland path
 let g:ycm_clangd_binary_path = '/usr/local/opt/llvm/bin/clangd'
-"------------------------------
+"---------------------------------
 
 "----------- Commentary ----------
 autocmd FileType python,shell set commentstring=#\ %s
@@ -88,9 +116,9 @@ autocmd FileType java,c,cpp,rust set commentstring=//\ %s
 autocmd FileType vim set commentstring=\"\ %s
 "---------------------------------
 
-"----------- Rainbow ----------
+"------------ Rainbow ------------
 let g:rainbow_active=1
-"------------------------------
+"---------------------------------
 
 "------------ map <Meta> key to Option in macOS --------
 "Need to set Left (or Right) Option Key as Esc+ in iTerm.app's profile
@@ -137,29 +165,4 @@ endfunc
 
 call Terminal_MetaMode(0)
 "command! -nargs=0 -bang VimMetaInit call Terminal_MetaMode(<bang>0)
-"------------------------------
-
-"----------- tab switch ---------
-map <M-t> :tabnew
-map <M-0> :tablast<CR>
-map <M-1> 1gt
-map <M-2> 2gt
-map <M-3> 3gt
-map <M-4> 4gt
-map <M-5> 5gt
-map <M-6> 6gt
-map <M-7> 7gt
-map <M-8> 8gt
-map <M-9> 9gt
-"---------------------------
-
-"--------- typo command ------
-nnoremap ; :
-:command W w
-:command WQ wq
-:command Wq wq
-:command Q q
-:command Qa qa
-:command QA qa
-"------------------------------
-
+"-------------------------------------------------------
