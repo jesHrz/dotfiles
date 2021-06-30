@@ -224,7 +224,7 @@ end alfred_script</string>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>fi</string>
+				<string>fit</string>
 				<key>subtext</key>
 				<string>Open current Finder directory in iTerm</string>
 				<key>text</key>
