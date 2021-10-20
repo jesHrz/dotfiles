@@ -57,25 +57,26 @@ set langmenu=zh_CN.UTF-8
 set helplang=cn
 set termencoding=utf-8
 set encoding=utf8
-set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
+set fileencodings=utf8,gbk,cp936,gb2312,gb18030
 
 " vim-interface
 set t_Co=256
-set termguicolors
+if has('termguicolors')
+    set termguicolors
+endif
 set noeb
 set mouse=a
 set hidden
 set showcmd
 set ruler
 set cursorline
-set cursorcolumn
 set number relativenumber
-set cmdheight=2
+set cmdheight=3
 set laststatus=2
 set showtabline=2
 set noshowmode
 set nofoldenable
-set signcolumn=yes
+set signcolumn=auto
 
 " Command Completion
 set wildmenu
@@ -94,8 +95,6 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -103,7 +102,6 @@ Plug 'akinsho/nvim-bufferline.lua'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/vim-cursorword'
-Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -114,8 +112,6 @@ Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'rhysd/accelerated-jk'
-Plug 'justinmk/vim-sneak'
-Plug 'junegunn/vim-slash'
 Plug 'vimlab/split-term.vim'
 
 Plug 'neovim/nvim-lspconfig'
@@ -128,20 +124,24 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'rafamadriz/friendly-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'vim-scripts/c.vim'
 Plug 'rust-lang/rust.vim'
 
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
-" let g:dracula_italic = 0
-colorscheme dracula
-" colorscheme onehalflight
+colorscheme koehler
+"" clear the color of signcolumn
+highlight clear SignColumn
+" let g:gruvbox_contrast_dark="hard"
+" colorscheme gruvbox
 
 " Edit Setting
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
@@ -167,7 +167,8 @@ augroup END
 autocmd BufEnter * silent! lcd %:p:h
 
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-autocmd FileType c,cpp,rust,go setlocal tabstop=4
+autocmd FileType c,cpp setlocal tabstop=2
+autocmd FileType rust setlocal tabstop=4
 
 " Init.vim Setting
 imap jj <Esc>
@@ -217,19 +218,6 @@ vnoremap > >gv
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
-" Tab Ident with |
-set list lcs=tab:\|\ ""
-
-" vim-slash
-noremap <plug>(slash-after) zz
-
-" vim-sneak
-let g:sneak#label = 1
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
-
 " Split-vim terminal
 noremap <F5> :Term<CR>
 noremap <C-w>t :Term<CR>
@@ -248,15 +236,6 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 " Bufferline
 noremap <A-j> :BufferLineCycleNext<cr>
 noremap <A-k> :BufferLineCyclePrev<cr>
-
-" These commands will move the current buffer backwards or forwards in the bufferline
-nnoremap <silent><mymap> :BufferLineMoveNext<CR>
-nnoremap <silent><mymap> :BufferLineMovePrev<CR>
-
-" These commands will sort buffers by directory, language, or a custom criteria
-nnoremap <silent><leader>be :BufferLineSortByExtension<CR>
-nnoremap <silent><leader>bd :BufferLineSortByDirectory<CR>
-nnoremap <silent><mymap> :lua require'bufferline'.sort_buffers_by(function (buf_a, buf_b) return buf_a.id < buf_b.id end)<CR>
 
 " lspsaga
 nnoremap <silent> gh :Lspsaga lsp_finder<CR>

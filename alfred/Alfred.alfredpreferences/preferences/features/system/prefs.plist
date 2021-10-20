@@ -5,6 +5,7 @@
 	<key>ejectBlacklist</key>
 	<array>
 		<string>APPLE SSD</string>
+		<string>BOOTCAMP</string>
 		<string>com.apple.TimeMachine*</string>
 		<string>Macintosh HD</string>
 		<string>MobileBackups</string>
@@ -14,6 +15,8 @@
 	<key>ejectallKeywordEnabled</key>
 	<true/>
 	<key>emptytrashConfirm</key>
+	<true/>
+	<key>logoutConfirm</key>
 	<true/>
 	<key>restartConfirm</key>
 	<true/>

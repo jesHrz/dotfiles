@@ -17,6 +17,19 @@
 			<key>utf8</key>
 			<true/>
 		</dict>
+		<key>5B30C82A-CEAF-46D7-B491-F79056BD175D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gt</string>
+			<key>text</key>
+			<string>Google Translate</string>
+			<key>url</key>
+			<string>https://translate.google.com/?text={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>onlyShowEnabledInPrefs</key>
 	<true/>
