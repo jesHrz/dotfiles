@@ -16,27 +16,25 @@ Others
 - VS Code
 - Sublime Text 3
 - Docker
-- MindNode
 - FileZila
-- Parallels Desktop (TNT)
+- VMware Fusion
 - Octotree (from apptree for Safari, or from google store for Chrome)
-- TeamViewer
-- Daisy Disk (from xclient)
+- ToDesk
 - Tencent Lemon
 - Alfred 4 (from xclient)
 - Youdao Diction
 - Snipaste
 - Text Scanner ()
-- Skim
 - MacZip
 - Magnet (from appstore)
-- Latex
-- ShadowsocksX-NG-R8
+- ClashX
 - EasyConnect (may be unavailable)
 - iTerm
-- Bartender 4 (from xclient)
 - uPic
 - RDM
-- NTFSTool
 - Office
 - Brew
+- 1password
+- Termius
+- EndNote
+- Itsycal

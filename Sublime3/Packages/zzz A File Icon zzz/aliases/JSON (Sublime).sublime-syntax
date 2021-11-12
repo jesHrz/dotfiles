@@ -8,6 +8,7 @@ file_extensions:
   - .sublime-project
   - hidden-color-scheme
   - hidden-theme
+  - sublime-build
   - sublime-color-scheme
   - sublime-commands
   - sublime-completions
@@ -21,5 +22,5 @@ file_extensions:
   - sublime-workspace
 contexts:
   main:
-    - include: scope:source.json#prototype
     - include: scope:source.json
+      apply_prototype: true

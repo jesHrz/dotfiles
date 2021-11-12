@@ -1,22 +1,15 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
 {
-	"auto_complete_triggers":
-	[
-		{
-			"characters": "<",
-			"selector": "text.html"
-		},
-		{
-			"characters": "\\",
-			"selector": "text.tex.latex"
-		}
+	"ignored_packages": [
 	],
-	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
-	"font_face": "Roboto Mono",
-	"font_size": 13,
-	"ignored_packages":
-	[
-		"Markdown"
-	],
-	"theme": "Default.sublime-theme",
-	"ui_separator": true
+	"font_face": "Hack",
+	"font_size": 14,
+	"vintage_start_in_command_mode": true,
+	"highlight_line": true,
+	"caret_extra_top": 1,
+	"caret_extra_bottom": 1,
+	"bold_folder_labels": true,
+	"theme": "Sodarized Dark 3.sublime-theme",
+	"color_scheme": "Solarized (dark).sublime-color-scheme",
 }

@@ -1,5 +1,8 @@
 [
-	{ "keys": ["super+r"], "command": "build" },
-	{ "keys": ["super+ctrl+forward_slash"], "command": "coolformat", "args": {"action": "quickFormat"} },
-	{ "keys": ["super+ctrl+shift+forward_slash"], "command": "coolformat", "args": {"action": "selectedFormat"} },
+	{ "keys": ["j", "j"], "command": "exit_insert_mode",
+	   "context": [
+	        { "key": "setting.command_mode", "operand": false },
+	        { "key": "setting.is_widget", "operand": false }
+	    ]
+    }	
 ]

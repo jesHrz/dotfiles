@@ -16,8 +16,10 @@ file_extensions:
   - ruleset
   - settings
   - targets
+  - wxl
+  - wxs
   - xaml
 contexts:
   main:
-    - include: scope:text.xml#prototype
     - include: scope:text.xml
+      apply_prototype: true

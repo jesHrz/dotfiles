@@ -12,6 +12,8 @@
 	</array>
 	<key>ejectKeywordEnabled</key>
 	<true/>
+	<key>ejectType</key>
+	<integer>0</integer>
 	<key>ejectallKeywordEnabled</key>
 	<true/>
 	<key>emptytrashConfirm</key>

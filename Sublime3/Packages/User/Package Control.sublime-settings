@@ -6,23 +6,15 @@
 	"installed_packages":
 	[
 		"A File Icon",
-		"ayu",
-		"Codecs33",
+		"AutoFileName",
 		"ConvertToUTF8",
-		"CoolFormat",
-		"Dracula Color Scheme",
-		"HexViewer",
-		"LaTeX-cwl",
-		"LaTeXTools",
-		"LiveReload",
-		"MarkdownEditing",
-		"MarkdownPreview",
-		"MarkdownTOC",
-		"MasmAssembly",
 		"Package Control",
+		"Panda Syntax Sublime",
 		"SideBarEnhancements",
-		"Table Editor",
+		"Solarized Color Scheme",
 		"Terminal",
-		"Vintage Escape"
-	]
+		"Theme - Sodarized",
+		"Vintage Escape",
+		"Vintage Surround",
+	],
 }

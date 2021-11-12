@@ -30,8 +30,12 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smarttab
+set expandtab
 
-set wrap linebreak nolist
+
+set wrap
+set linebreak
+set nolist
 set shortmess+=c
 set whichwrap+=<,>,h,l
 set virtualedit=block,onemore
@@ -81,7 +85,7 @@ set signcolumn=auto
 " Command Completion
 set wildmenu
 set wildmode=longest:full,full
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 
 
 " Vim-Plug init
@@ -118,14 +122,16 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'onsails/lspkind-nvim'
 Plug 'glepnir/lspsaga.nvim'
-
-Plug 'hrsh7th/nvim-compe'
+" Plug 'hrsh7th/nvim-compe'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'vim-scripts/c.vim'
 Plug 'rust-lang/rust.vim'
@@ -133,15 +139,14 @@ Plug 'rust-lang/rust.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
+" colorscheme solarized
 colorscheme koehler
 "" clear the color of signcolumn
 highlight clear SignColumn
-" let g:gruvbox_contrast_dark="hard"
-" colorscheme gruvbox
 
 " Edit Setting
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
@@ -167,7 +172,7 @@ augroup END
 autocmd BufEnter * silent! lcd %:p:h
 
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-autocmd FileType c,cpp setlocal tabstop=2
+autocmd FileType c,cpp,cc setlocal tabstop=4
 autocmd FileType rust setlocal tabstop=4
 
 " Init.vim Setting
@@ -227,12 +232,6 @@ noremap <C-w>T :VTerm<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" compe
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
 " Bufferline
 noremap <A-j> :BufferLineCycleNext<cr>
 noremap <A-k> :BufferLineCyclePrev<cr>
@@ -254,21 +253,12 @@ nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
 tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 highlight link LspSagaFinderSelection Search
 
-" Ultisnip
-let g:UltiSnipsExpandTrigger="<NUL>"
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
-let g:UltiSnipsEditSplit="vertical"
-
 " MarkdownPreview
 noremap <F12> :MarkdownPreviewToggle<CR>
 
 " Sudo on files that require root permission
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-			\ lua require'lsp_extensions'.inlay_hints{ prefix = ' >> ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 autocmd FileType rust nmap <leader>mbb :Cbuild<cr>
 autocmd FileType rust nmap <leader>mbt :Ctest<cr>
 autocmd FileType rust nmap <leader>mbr :Crun<cr>
