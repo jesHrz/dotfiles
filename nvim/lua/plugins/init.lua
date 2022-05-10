@@ -1,5 +1,6 @@
 local packer = require("packer")
 
+
 packer.startup(
   function(use)
       -- Packer itself
@@ -26,8 +27,10 @@ packer.startup(
       use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
       use("tami5/lspsaga.nvim" )
 
-      -- completion
+      -- completion engine
       use("hrsh7th/nvim-cmp")
+      -- snippet engine
+      use("hrsh7th/vim-vsnip")
       -- source
       use("hrsh7th/cmp-vsnip")
       use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
@@ -49,6 +52,9 @@ packer.startup(
 
       use("windwp/nvim-autopairs")
       use("tpope/vim-surround")
+
+      -- Rust enhancement
+      use("simrat39/rust-tools.nvim")
   end
 )
 
@@ -69,6 +75,7 @@ require("plugins.lualine")
 require("plugins.nvim-treesitter")
 require("plugins.indent-blankline")
 require("plugins.lspsaga")
+
 
 -- default configure
 require('nvim-autopairs').setup{}

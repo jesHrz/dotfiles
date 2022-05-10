@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 
+
 local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and
@@ -13,8 +14,8 @@ local cmp_keymaps = {
   }),
   ["<S-k>"] = cmp.mapping.select_prev_item(),
   ["<S-j>"] = cmp.mapping.select_next_item(),
-  ["<leader>."] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-  ["<leader>,"] = cmp.mapping({
+  ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+  ["<A-,>"] = cmp.mapping({
     i = cmp.mapping.abort(),
     c = cmp.mapping.close(),
   }),
@@ -79,12 +80,18 @@ local function cmp_format(entry, vim_item)
 end
 
 cmp.setup({
-  formatting = { format = cmp_format },
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
+    { name = "vsnip" },
     { name = "buffer" },
     { name = "path" },
   }),
+  formatting = { format = cmp_format },
   mapping = cmp_keymaps,
 })
 
