@@ -65,6 +65,7 @@ lsp_installer.on_server_ready(function(server)
   if config and config.on_setup then
     config.on_setup(server, lsp_keymaps)
   else
-    vim.notify("lsp setup config of " .. server.name .. " not found, disable it")
+    -- vim.notify("lsp setup config of " .. server.name .. " not found, disable it")
+    server:setup({})
   end
 end)
