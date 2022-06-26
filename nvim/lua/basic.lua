@@ -1,93 +1,95 @@
 -- utf-8
 vim.g.encoding = "utf-8"
-vim.o.fileencoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 -- relative line number
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+-- vim.opt.relativenumber = true
 
 -- highlight current line
-vim.wo.cursorline = true
+vim.opt.cursorline = true
 
 -- show signcolumn on the left of line number
-vim.wo.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
 -- tab size
-vim.o.tabstop = 4
+vim.opt.tabstop = 4
 vim.bo.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.smarttab = true
-vim.o.showtabline = 2
-vim.o.shiftround = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.smarttab = true
+vim.opt.showtabline = 2
+vim.opt.shiftround = true
 
 -- >> << move step
-vim.o.shiftwidth = 2
+vim.opt.shiftwidth = 2
 vim.bo.shiftwidth = 2
 
 -- indent using space
-vim.o.expandtab = true
+vim.opt.expandtab = true
 vim.bo.expandtab = true
 
 -- new line aligned
-vim.o.autoindent = true
+vim.opt.autoindent = true
 vim.bo.autoindent = true
-vim.o.smartindent = true
+vim.opt.smartindent = true
 
--- search is case-intensive 
+-- search is case-intensive
 -- unless the contents contain uppercase
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- no highlight when searching
-vim.o.hlsearch = false
+vim.opt.hlsearch = false
 
 -- do searching after finishing input
-vim.o.incsearch = true
+vim.opt.incsearch = true
 
 -- cmd line height
-vim.o.cmdheight = 2
+vim.opt.cmdheight = 2
 
 -- auto load file when external change occurs
 vim.o.autoread = true
 vim.bo.autoread = true
 
 -- disable backup
-vim.o.backup = false
-vim.o.swapfile = false
-vim.o.writebackup = false
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.writebackup = false
 
 -- undo
-vim.o.undodir = os.getenv("HOME") .. "/.nvim/undodir/"
-vim.o.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir/"
+vim.opt.undofile = true
 
 -- mouse support
-vim.o.mouse = "a"
+vim.opt.mouse = "a"
 
 -- disable line wrapping
-vim.wo.wrap = false
-vim.o.whichwrap = "<,>,[,]"
+vim.opt.wrap = false
+vim.cmd "set whichwrap+=<,>,[,]"
+vim.cmd [[set iskeyword+=-]]
 
--- smaller update time (for swapfile flush and CursorHold cmd) 
-vim.o.updatetime = 300
+-- smaller update time (for swapfile flush and CursorHold cmd)
+vim.opt.updatetime = 100
 
 -- smaller timeout to determine key code sequence
-vim.o.timeoutlen = 500
+vim.opt.timeoutlen = 100
 
 -- show split windows from below and right
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- auto complete
 vim.o.wildmenu = true
-vim.o.completeopt = "menu,menuone,noselect,noinsert"
-vim.o.pumheight = 10
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.conceallevel = 0
+vim.opt.pumheight = 10
 
 -- disable default status bar
-vim.o.showmode = false
+vim.opt.showmode = false
 
 -- show invisible char
-vim.o.list = true
+vim.opt.list = true
 
 -- colorscheme
 -- vim.o.background = "light"
@@ -96,8 +98,8 @@ vim.o.termguicolors = true
 vim.opt.termguicolors = true
 
 -- Dont' pass messages to |ins-completin menu|
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.opt.shortmess:append "c"
 
 -- clipboard
 vim.o.go="a"
-vim.o.clipboard="unnamedplus"
+vim.opt.clipboard="unnamedplus"

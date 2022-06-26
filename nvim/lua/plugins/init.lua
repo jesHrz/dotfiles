@@ -24,6 +24,10 @@ packer.startup(
       use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
       use("p00f/nvim-ts-rainbow")
 
+      -- comments
+      use("numToStr/Comment.nvim")
+      use("JoosepAlviste/nvim-ts-context-commentstring")
+
       -- LSP
       use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
       use("tami5/lspsaga.nvim" )
@@ -76,6 +80,7 @@ require("plugins.lualine")
 require("plugins.nvim-treesitter")
 require("plugins.indent-blankline")
 require("plugins.lspsaga")
+require("plugins.comment")
 
 
 -- default configure

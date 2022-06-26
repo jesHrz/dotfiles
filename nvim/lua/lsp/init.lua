@@ -55,10 +55,11 @@ for name,_ in pairs(servers) do
   end
 end
 
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = true,
-})
+-- vim.diagnostic.config({
+--   virtual_text = false,
+--   signs = true,
+--   update_in_insert = true,
+-- })
 
 lsp_installer.on_server_ready(function(server)
   local config = servers[server.name]

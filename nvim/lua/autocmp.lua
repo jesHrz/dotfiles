@@ -1,31 +1,19 @@
 local cmp = require("cmp")
 
-
-local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and
-           vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+local check_backspace = function()
+    local col = vim.fn.col "." - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
 local cmp_keymaps = {
-  ["<CR>"] = cmp.mapping.confirm({
-    select = true,
-    behavior = cmp.ConfirmBehavior.Replace
-  }),
-  ["<S-k>"] = cmp.mapping.select_prev_item(),
-  ["<S-j>"] = cmp.mapping.select_next_item(),
-  ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-  ["<A-,>"] = cmp.mapping({
-    i = cmp.mapping.abort(),
-    c = cmp.mapping.close(),
-  }),
+  ["<CR>"] = cmp.mapping.confirm({ select = true }),
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
-        cmp.select_next_item()
-    elseif has_words_before() then
-        cmp.complete()
+      cmp.select_next_item();
+    elseif check_backspace() then
+      fallback()
     else
-        fallback()
+      fallback();
     end
   end, {"i", "s"}),
   ["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -35,6 +23,13 @@ local cmp_keymaps = {
           fallback()
       end
   end, {"i", "s"}),
+  ["<C-k>"] = cmp.mapping.select_prev_item(),
+  ["<C-j>"] = cmp.mapping.select_next_item(),
+  ["<C-e>"] = cmp.mapping {
+    i = cmp.mapping.abort(),
+    c = cmp.mapping.close(),
+  },
+  ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
   -- 如果窗口内容太多，可以滚动
   ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
   ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
