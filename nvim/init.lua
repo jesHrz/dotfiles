@@ -1,6 +1,0 @@
-require("basic")
-require("keymaps")
-require("colorscheme")
-require("plugins")
-require("lsp")
-require("autocmp")
