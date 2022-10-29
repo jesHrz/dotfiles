@@ -1,22 +1,20 @@
 -- utf-8
-vim.g.encoding = "utf-8"
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 -- relative line number
 vim.opt.number = true
 -- vim.opt.relativenumber = true
 
--- highlight current line
-vim.opt.cursorline = true
-
 -- show signcolumn on the left of line number
 vim.opt.signcolumn = "yes"
 
 -- tab size
-vim.opt.tabstop = 4
-vim.bo.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.bo.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.smarttab = true
 vim.opt.showtabline = 2
 vim.opt.shiftround = true
@@ -49,7 +47,7 @@ vim.opt.incsearch = true
 vim.opt.cmdheight = 2
 
 -- auto load file when external change occurs
-vim.o.autoread = true
+vim.opt.autoread = true
 vim.bo.autoread = true
 
 -- disable backup
@@ -80,7 +78,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- auto complete
-vim.o.wildmenu = true
+vim.opt.wildmenu = true
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.conceallevel = 0
 vim.opt.pumheight = 10
@@ -90,9 +88,6 @@ vim.opt.showmode = false
 
 -- show invisible char
 vim.opt.list = true
-
--- colorscheme
-vim.opt.termguicolors = true
 
 -- Dont' pass messages to |ins-completin menu|
 vim.opt.shortmess:append "c"

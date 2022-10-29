@@ -23,9 +23,7 @@ packer.startup(
 
       if (not vim.g.vscode) then
         -- Theme
-        use("tjdevries/colorbuddy.vim")
-        use("Th3Whit3Wolf/onebuddy")
-        use("projekt0n/github-nvim-theme")
+        use("sainnhe/everforest")
 
         --NvimTree
         use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
@@ -48,12 +46,13 @@ packer.startup(
         -- completion engine
         use("hrsh7th/nvim-cmp")
         -- snippet engine
-        use("hrsh7th/vim-vsnip")
+        use("L3MON4D3/LuaSnip")
         -- source
-        use("hrsh7th/cmp-vsnip")
+        use("saadparwaiz1/cmp_luasnip")
         use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
         use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
         use("hrsh7th/cmp-path") -- { name = 'path' }
+        use("onsails/lspkind.nvim")
 
         -- indent-blankline
         use("lukas-reineke/indent-blankline.nvim")
@@ -79,15 +78,12 @@ pcall(
 )
 
 require("plugins.comment")
+require("plugins.nvim-tree")
+require("plugins.bufferline")
+require("plugins.lualine")
+require("plugins.nvim-treesitter")
+require("plugins.indent-blankline")
+require("plugins.lspsaga")
 
-if (not vim.g.vscode) then
-  require("plugins.nvim-tree")
-  require("plugins.bufferline")
-  require("plugins.lualine")
-  require("plugins.nvim-treesitter")
-  require("plugins.indent-blankline")
-  require("plugins.lspsaga")
-
-  -- default configure
-  require('nvim-autopairs').setup{}
-end
+-- default configure
+require('nvim-autopairs').setup{}

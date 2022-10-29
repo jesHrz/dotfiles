@@ -1,15 +1,27 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local check_backspace = function()
     local col = vim.fn.col "." - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
+
 local cmp_keymaps = {
-  ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  ["<CR>"] = cmp.mapping.confirm({
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = true
+  }),
   ["<Tab>"] = cmp.mapping(function(fallback)
     if cmp.visible() then
       cmp.select_next_item();
+    elseif has_words_before() then
+      cmp.complete()
     elseif check_backspace() then
       fallback()
     else
@@ -17,11 +29,11 @@ local cmp_keymaps = {
     end
   end, {"i", "s"}),
   ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-          cmp.select_prev_item()
-      else
-          fallback()
-      end
+    if cmp.visible() then
+      cmp.select_prev_item();
+    else
+      fallback();
+    end
   end, {"i", "s"}),
   ["<C-k>"] = cmp.mapping.select_prev_item(),
   ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -35,8 +47,28 @@ local cmp_keymaps = {
   ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
 }
 
-local function cmp_format(entry, vim_item)
-  local lspkind_icons = {
+lspkind.init({
+    -- DEPRECATED (use mode instead): enables text annotations
+    --
+    -- default: true
+    -- with_text = true,
+
+    -- defines how annotations are shown
+    -- default: symbol
+    -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+    mode = 'symbol_text',
+
+    -- default symbol map
+    -- can be either 'default' (requires nerd-fonts font) or
+    -- 'codicons' for codicon preset (requires vscode-codicons font)
+    --
+    -- default: 'default'
+    preset = 'codicons',
+
+    -- override preset symbols
+    --
+    -- default: {}
+    symbol_map = {
       Text = "",
       Method = "",
       Function = "",
@@ -62,31 +94,27 @@ local function cmp_format(entry, vim_item)
       Event = "",
       Operator = "",
       TypeParameter = ""
-  }
-  -- load lspkind icons
-  vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
-  vim_item.menu = ({
-      nvim_lsp = "[LSP]",
-      buffer = "[BUF]",
-      path = "[PATH]",
-  })[entry.source.name]
-
-  return vim_item
-end
+    },
+})
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      --[[ vim.fn["vsnip#anonymous"](args.body) ]]
+      luasnip.lsp_expand(args.body)
     end,
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "vsnip" },
+    --[[ { name = "vsnip" }, ]]
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   }),
-  formatting = { format = cmp_format },
+  --[[ formatting = { format = cmp_format }, ]]
+  formatting = {
+    format = lspkind.cmp_format({wirth_text=false, maxwidth=50})
+  },
   mapping = cmp_keymaps,
 })
 
