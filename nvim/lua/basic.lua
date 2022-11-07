@@ -5,7 +5,7 @@ vim.opt.fileencoding = "utf-8"
 
 -- relative line number
 vim.opt.number = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- show signcolumn on the left of line number
 vim.opt.signcolumn = "yes"
@@ -79,7 +79,7 @@ vim.opt.splitright = true
 
 -- auto complete
 vim.opt.wildmenu = true
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.conceallevel = 0
 vim.opt.pumheight = 10
 
@@ -90,8 +90,11 @@ vim.opt.showmode = false
 vim.opt.list = true
 
 -- Dont' pass messages to |ins-completin menu|
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append "atIc"
 
 -- clipboard
 vim.o.go="a"
 vim.opt.clipboard="unnamedplus"
+
+-- disable comment continuation for new lines
+vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")

@@ -24,12 +24,12 @@ default_shell "fish"
 //   - true (default)
 //   - false
 //
-pane_frames false
+pane_frames true
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "default" 
+theme "everforest-dark"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -66,7 +66,7 @@ scroll_buffer_size 10000
 //
 // copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
-// copy_command "pbcopy"                     // osx
+copy_command "pbcopy"                     // osx
 
 // Choose the destination for copied text
 // Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.

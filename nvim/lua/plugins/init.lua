@@ -59,9 +59,21 @@ packer.startup(
 
         use("windwp/nvim-autopairs")
         use("tpope/vim-surround")
+        use({
+          'phaazon/hop.nvim',
+          branch = 'v2', -- optional but strongly recommended
+        }) -- same plugin like easymotion but for neovim
 
         -- Rust enhancement
         use("simrat39/rust-tools.nvim")
+
+        use("nvim-lua/plenary.nvim")
+        use({
+          'nvim-telescope/telescope.nvim', tag = '0.1.0',
+          requires = { {'nvim-lua/plenary.nvim'} }
+        })
+
+        use("simrat39/symbols-outline.nvim")
       end
   end
 )
@@ -84,6 +96,11 @@ require("plugins.lualine")
 require("plugins.nvim-treesitter")
 require("plugins.indent-blankline")
 require("plugins.lspsaga")
+require("plugins.telescope")
+require("plugins.symbols-outline")
+require("plugins.hop")
 
 -- default configure
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup{
+  disable_filetype = {'TelescopePrompt', 'vim'}
+}

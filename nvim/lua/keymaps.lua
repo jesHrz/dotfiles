@@ -24,27 +24,25 @@ _g.global_setting = function()
   vim.g.mapleader = " "
   vim.g.maplocalleader = " "
 
-  map("n", "<leader>q", "<Cmd>q<CR>")
-  map("n", "<leader>w", "<Cmd>w<CR>")
+  map("n", "<leader><leader>q", "<Cmd>q<CR>")
+  map("n", "<leader><leader>w", "<Cmd>w<CR>")
 
   -- split windows
   map("n", "sv", ":vsp<CR>")
   map("n", "sh", ":sp<CR>")
-
   -- close current
   map("n", "sc", "<C-w>c")
-
   -- close other
   map("n", "so", "<C-w>o")
 
   -- jump between windows
-  map("n", "f", "<C-w>w")
+  map("n", "<leader>s", "<C-w>w")
   map("n", "<leader>sh", "<C-w>h")
   map("n", "<leader>sj", "<C-w>j")
   map("n", "<leader>sk", "<C-w>k")
   map("n", "<leader>sl", "<C-w>l")
 
-  -- I dont know why my `J` will delete the newline, so I disable it
+  -- I dont know why my `J` will delete the newline, so I disable it.
   map("n", "J", "<Nop>")
   map("n", "<C-j>", "<Nop>")
 
