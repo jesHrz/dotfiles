@@ -17,16 +17,16 @@ lualine.setup{
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
       'filename',
-      {
-        "lsp_progress",
-        spinner_symbols = { " ", " ", " ", " ", " ", " " },
-      }
+      --[[ { ]]
+      --[[   "lsp_progress", ]]
+      --[[   spinner_symbols = { " ", " ", " ", " ", " ", " " }, ]]
+      --[[ } ]]
     },
     lualine_x = {
-      'filesize', 
+      'filesize',
       {
         'fileformat',
         symbols = {
@@ -35,7 +35,7 @@ lualine.setup{
           mac = "CR",
         },
       },
-      'encoding', 
+      'encoding',
       'filetype'
     },
     lualine_y = {'progress'},
@@ -50,5 +50,10 @@ lualine.setup{
     lualine_z = {}
   },
   tabline = {},
-  extensions = { "nvim-tree", "toggleterm" },
+  extensions = { "nvim-tree", "toggleterm", "symbols-outline" },
+  refresh = {
+    statusline = 1000,
+    tabline = 1000,
+    winbar = 1000,
+  }
 }
