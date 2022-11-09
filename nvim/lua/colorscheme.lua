@@ -10,4 +10,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end
 })
 
-vim.cmd('colorscheme everforest')
+require("onenord").setup({
+  theme = "dark",
+  borders = true,
+})
+--[[ vim.cmd('colorscheme everforest') ]]

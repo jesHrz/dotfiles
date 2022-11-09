@@ -11,6 +11,7 @@ packer.startup(
 
     -- Theme
     use("sainnhe/everforest")
+    use("rmehri01/onenord.nvim")
 
     --NvimTree
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
