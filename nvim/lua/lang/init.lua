@@ -1,14 +1,36 @@
-local status, lsp_installer = pcall(require, "nvim-lsp-installer")
-
+local status, mason = pcall(require, "mason")
 if not status then
-  vim.notify("plugin nvim-lsp-installer not found")
+  vim.notify("plugin mason not found")
   return
 end
 
+local status, mason_config = pcall(require, "mason-lspconfig")
+if not status then
+  vim.notify("plugin mason-lspconfig not found")
+  return
+end
+
+local status, lspconfig = pcall(require, "lspconfig")
+if not status then
+  vim.notify("plugin nvim-lspconfig not found")
+  return
+end
+
+mason.setup()
+mason_config.setup({
+  ensure_installed = {
+    "rust_analyzer",
+    "clangd",
+    "pyright",
+    "bashls",
+    "sumneko_lua"
+  }
+})
+
 local servers = {
-  clangd = require("lsp.clike"),
-  rust_analyzer = require("lsp.rust"),
-  sumneko_lua = require("lsp.lua"),
+  clangd = require("lang.clike"),
+  rust_analyzer = require("lang.rust"),
+  sumneko_lua = require("lang.lua"),
 }
 
 local mapbuf = require("keymaps").mapbuf
@@ -44,29 +66,17 @@ local function lsp_keymaps(bufnr)
   mapbuf(bufnr, "n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>")
   mapbuf(bufnr, "n", "d[", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
   mapbuf(bufnr, "n", "d]", "<cmd>Lspsaga diagnostic_jump_next()<CR>")
-
 end
 
-for name,_ in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found and (not server:is_installed()) then
-    print("Installing " .. name)
-    server:install()
+local installed_servers = mason_config.get_installed_servers()
+
+if #installed_servers > 0 then
+  for _, name in ipairs(installed_servers) do
+    local config = servers[name]
+    if config then
+      config.on_setup(lspconfig[name], lsp_keymaps)
+    else
+      lspconfig[name].setup({})
+    end
   end
 end
-
--- vim.diagnostic.config({
---   virtual_text = false,
---   signs = true,
---   update_in_insert = true,
--- })
-
-lsp_installer.on_server_ready(function(server)
-  local config = servers[server.name]
-  if config and config.on_setup then
-    config.on_setup(server, lsp_keymaps)
-  else
-    -- vim.notify("lsp setup config of " .. server.name .. " not found, disable it")
-    server:setup({})
-  end
-end)

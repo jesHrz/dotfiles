@@ -28,18 +28,26 @@ packer.startup(
     use("p00f/nvim-ts-rainbow")
 
     -- LSP
-    use({ "neovim/nvim-lspconfig", "williamboman/nvim-lsp-installer" })
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    })
     use("tami5/lspsaga.nvim" )
 
     -- completion engine
-    use("hrsh7th/nvim-cmp")
-    -- snippet engine
-    use("L3MON4D3/LuaSnip")
+    use({
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip"
+    })
     -- source
-    use("saadparwaiz1/cmp_luasnip")
-    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
-    use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
-    use("hrsh7th/cmp-path") -- { name = 'path' }
+    use({
+      "hrsh7th/cmp-nvim-lsp",-- { name = nvim_lsp }
+      "hrsh7th/cmp-buffer", -- { name = 'buffer' },
+      "hrsh7th/cmp-path",  -- { name = 'path' }
+    })
     use("onsails/lspkind.nvim")
 
     -- indent-blankline

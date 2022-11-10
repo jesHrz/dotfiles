@@ -5,7 +5,7 @@ table.insert(runtime_path, 'lua/?/init.lua')
 
 return {
   on_setup = function(server, keymaps)
-    server:setup{
+    server.setup({
       settings = {
         Lua = {
             runtime = {
@@ -34,12 +34,10 @@ return {
       },
       on_attach = function(client, bufnr)
           -- 禁用格式化功能，交给专门插件插件处理
-          --[[ client.resolved_capabilities.document_formatting = false ]]
-          --[[ client.resolved_capabilities.document_range_formatting = false ]]
           client.server_capabilities.document_formatting = false
           client.server_capabilities.document_range_formatting = false
           keymaps(bufnr)
       end,
-    }
+    })
   end,
 }

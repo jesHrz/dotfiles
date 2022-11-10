@@ -1,6 +1,6 @@
 require("basic")
 require("keymaps")
-require("colorscheme")
 require("plugins")
-require("lsp")
+require("colorscheme")
+require("lang")
 require("autocmp")
