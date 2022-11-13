@@ -79,7 +79,6 @@ vim.opt.splitright = true
 
 -- auto complete
 vim.opt.wildmenu = true
-vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.conceallevel = 0
 vim.opt.pumheight = 10
 

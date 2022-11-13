@@ -10,9 +10,6 @@ lualine.setup{
     theme = "auto",
     component_separators = {left = '', right = '' },
     section_separators = { left = '', right = '' },
-    -- component_separators = { left = "|", right = "|" },
-    -- https://github.com/ryanoasis/powerline-extra-symbols
-    -- section_separators = { left = " ", right = "" },
     disabled_filetypes = {},
   },
   sections = {
@@ -20,10 +17,10 @@ lualine.setup{
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
       'filename',
-      --[[ { ]]
-      --[[   "lsp_progress", ]]
-      --[[   spinner_symbols = { " ", " ", " ", " ", " ", " " }, ]]
-      --[[ } ]]
+      {
+        "lsp_progress",
+        spinner_symbols = { " ", " ", " ", " ", " ", " " },
+      }
     },
     lualine_x = {
       'filesize',
