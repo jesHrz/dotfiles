@@ -44,9 +44,9 @@ packer.startup(
     })
     -- source
     use({
-      "hrsh7th/cmp-nvim-lsp",-- { name = nvim_lsp }
       "hrsh7th/cmp-buffer", -- { name = 'buffer' },
       "hrsh7th/cmp-path",  -- { name = 'path' }
+      "hrsh7th/cmp-cmdline", -- { name = 'cmdline' }
     })
     use("onsails/lspkind.nvim")
 
