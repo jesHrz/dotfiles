@@ -16,7 +16,7 @@ shell:
 
 window:
   # 背景透明度
-  opacity: 0.85
+  #opacity: 0.85
   # 窗口大小
   dimensions:
     columns: 120
@@ -44,6 +44,7 @@ mouse_bindings:
 key_binding:
   - { key: V, mods: Control|Shift, action: Paste }
   - { key: C, mods: Control|Shift, action: Copy }
+  - { key: N,         mods: Command, command: { program: "open", args: ["-n", "/Applications/Alacritty.app"] } }
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
   - { key: C,         mods: Alt,       chars: "\x1bc"                       }

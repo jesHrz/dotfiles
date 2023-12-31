@@ -47,7 +47,7 @@ _g.global_setting = function()
   map("n", "<C-j>", "<Nop>")
 
   -- Terminal
-  map("n", "<leader>t", ":sp | terminal<CR>")
+  map("n", "<leader>tt", ":sp | terminal<CR>")
   map("n", "<leader>vt", ":vsp | terminal<CR>")
   map("t", "<Esc>", "<C-\\><C-n>")
   map("t", "<leader>sh", [[ <C-\><C-N><C-w>h ]])

@@ -23,14 +23,14 @@ mason_config.setup({
     "clangd",
     "pyright",
     "bashls",
-    "sumneko_lua"
+    "lua_ls"
   }
 })
 
 local servers = {
   clangd = require("lang.clike"),
   rust_analyzer = require("lang.rust"),
-  sumneko_lua = require("lang.lua"),
+  lua_ls = require("lang.lua"),
 }
 
 local mapbuf = require("keymaps").mapbuf

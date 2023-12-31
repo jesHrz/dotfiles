@@ -25,7 +25,7 @@ packer.startup(
 
     --treesitter
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-    use("p00f/nvim-ts-rainbow")
+    use("HiPhish/nvim-ts-rainbow2")
 
     -- LSP
     use({
@@ -86,16 +86,16 @@ pcall(
   ]]
 )
 
-require("plugins.comment")
-require("plugins.nvim-tree")
 require("plugins.bufferline")
-require("plugins.lualine")
-require("plugins.nvim-treesitter")
-require("plugins.indent-blankline")
-require("plugins.lspsaga")
-require("plugins.telescope")
-require("plugins.symbols-outline")
+require("plugins.comment")
 require("plugins.hop")
+-- require("plugins.indent-blankline")
+require("plugins.lspsaga")
+require("plugins.lualine")
+require("plugins.nvim-tree")
+require("plugins.nvim-treesitter")
+require("plugins.symbols-outline")
+require("plugins.telescope")
 
 -- default configure
 require('nvim-autopairs').setup{
