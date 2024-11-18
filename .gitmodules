@@ -1,0 +1,9 @@
+[submodule "zsh/dot-config/omz-custom/plugins/zsh-autosuggestions"]
+	path = zsh/dot-config/omz-custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "zsh/dot-config/omz-custom/plugins/zsh-syntax-highlighting"]
+	path = zsh/dot-config/omz-custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/dot-config/omz-custom/themes/powerlevel10k"]
+	path = zsh/dot-config/omz-custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

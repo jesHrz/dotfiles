@@ -1,0 +1,5 @@
+alias vim="nvim"
+alias zshconfig="vim $HOME/.zshrc"
+alias pc="proxychains4 -q"
+alias ls="eza"
+alias cat="bat"
