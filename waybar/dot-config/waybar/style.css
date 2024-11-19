@@ -3,14 +3,14 @@
  * ----------------------------------------------------- */
 @import '../../.cache/wal/colors-waybar.css';
 
-@define-color backgroundlight #FFFFFF;
-@define-color backgrounddark #FFFFFF;
-@define-color workspacesbackground1 #FFFFFF;
-@define-color workspacesbackground2 #CCCCCC;
-@define-color bordercolor #FFFFFF;
-@define-color textcolor1 #000000;
-@define-color textcolor2 #000000;
-@define-color textcolor3 #000000;
+@define-color backgroundlight #4E514E;
+@define-color backgrounddark #0D140D;
+@define-color workspacesbackground1 @4E514E;
+@define-color workspacesbackground2 @0D140D;
+@define-color bordercolor @6F6F71;
+@define-color textcolor1 #FFFFFF;
+@define-color textcolor2 #FFFFFF;
+@define-color textcolor3 #FFFFFF;
 @define-color iconcolor #FFFFFF;
 
 /* -----------------------------------------------------
@@ -29,7 +29,8 @@
 }
 
 window#waybar {
-    background-color: rgba(255,255,255,0.1);
+    /* background-color: rgba(255,255,255,0.1); */
+    background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 0px solid #ffffff;
     /* color: #FFFFFF; */
     transition-property: background-color;
@@ -90,7 +91,7 @@ window#waybar {
 
 tooltip {
     border-radius: 10px;
-    background-color: @backgroundlight;
+    background-color: @backgrounddark;
     opacity:0.8;
     padding:20px;
     margin:0px;
@@ -163,6 +164,7 @@ window#waybar.empty #window {
  * Custom Quicklinks
  * ----------------------------------------------------- */
 
+#custom-notification,
 #custom-brave, 
 #custom-browser, 
 #custom-keybindings, 
@@ -307,7 +309,7 @@ window#waybar.empty #window {
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    opacity:0.9;
     border:3px solid @bordercolor;   
 }
 

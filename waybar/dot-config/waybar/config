@@ -46,6 +46,7 @@
         "group/tools",
         "tray",
         "custom/exit",
+        "custom/notification",
         "clock"
     ]
 }
