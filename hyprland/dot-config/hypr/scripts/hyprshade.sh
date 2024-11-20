@@ -7,32 +7,20 @@
 #        |___/|_|                                    
 # 
 
-if [[ "$1" == "rofi" ]]; then
+hyprshadesettings="$HOME/.config/hypr/settings/hyprshade.sh"
 
-    # Open rofi to select the Hyprshade filter for toggle
-    options="$(hyprshade ls)\noff"
-    
-    # Open rofi
-    choice=$(echo -e "$options" | rofi -dmenu -replace -config ~/.config/rofi/config-hyprshade.rasi -i -no-show-icons -l 4 -width 30 -p "Hyprshade") 
-    if [ ! -z $choice ] ;then
-        echo "hyprshade_filter=\"$choice\"" > ~/.config/hypr/settings/hyprshade.sh
-        if [ "$choice" == "off" ] ;then
-            hyprshade off
-            notify-send "Hyprshade deactivated"
-            echo ":: hyprshade turned off"            
-        else
-            notify-send "Changing Hyprshade to $choice" "Toggle shader with SUPER+SHIFT+S"
-        fi
-    fi
-    
-else
+run_rofi() {
+    theme="$HOME/.config/rofi/styles/style-launcher.rasi"
+    rofi -dmenu -replace -theme $theme -i -no-show-icons -l 4 -width 30 -p "Hyprshade"
+}
 
+enable_shade() {
     # Toggle Hyprshade based on the selected filter
     hyprshade_filter="blue-light-filter-50"
 
     # Check if hyprshade.sh settings file exists and load
-    if [ -f ~/.config/ml4w/settings/hyprshade.sh ] ;then
-        source ~/.config/hypr/settings/hyprshade.sh
+    if [ -f $hyprshadesettings ] ;then
+        source $hyprshadesettings
     fi
 
     # Toggle Hyprshade
@@ -51,6 +39,21 @@ else
     else
         hyprshade off
         echo ":: hyprshade turned off"
+        notify-send "Hyprshade deactivated"
     fi
 
+}
+
+if [[ "$1" == "rofi" ]]; then
+    # Open rofi to select the Hyprshade filter for toggle
+    options="$(hyprshade ls)\nOff"
+    
+    # Open rofi
+    choice=$(echo -e "$options" | run_rofi) 
+    if [ ! -z $choice ] ;then
+        echo "hyprshade_filter=\"$choice\"" > $hyprshadesettings
+        enable_shade
+    fi
+else
+    enable_shade
 fi

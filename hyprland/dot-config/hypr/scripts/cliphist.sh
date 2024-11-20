@@ -6,16 +6,17 @@
 #  \____|_|_| .__/|_| |_|_|___/\__| 
 #           |_|                     
 #  
+theme="$HOME/.config/rofi/styles/style-launcher.rasi"
 
 case $1 in
-    d) cliphist list | rofi -dmenu -replace -config ~/.config/rofi/config-cliphist.rasi | cliphist delete
+    d) cliphist list | rofi -dmenu -replace -them ${theme} | cliphist delete
        ;;
 
-    w) if [ `echo -e "Clear\nCancel" | rofi -dmenu -config ~/.config/rofi/config-short.rasi` == "Clear" ] ; then
+    w) if [ `echo -e "Clear\nCancel" | rofi -dmenu -theme ${theme}` == "Clear" ] ; then
             cliphist wipe
        fi
        ;;
 
-    *) cliphist list | rofi -dmenu -replace -config ~/.config/rofi/config-cliphist.rasi | cliphist decode | wl-copy
+    *) cliphist list | rofi -dmenu -replace -theme ${theme} | cliphist decode | wl-copy
        ;;
 esac

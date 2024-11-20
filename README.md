@@ -24,13 +24,12 @@ yay -S ttf-meslo-nerd
 ## Hyprland
 
 Software Requirements:
+- waybar
 - hyprland
 - hyprpaper
 - hyprlock
 - hypridle
 - hyprshade
-- wlogout
-- pywal: apply `wal -ei <your wallpaper>` first after you change the wallpaper
 - rofi-wayland
 - networkmanager
 - bluez
