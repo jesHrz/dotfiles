@@ -25,15 +25,16 @@
 
     // Modules Left
     "modules-left": [
-        "custom/appmenu",
-        "group/settings",
+        "group/tools",
+        "hyprland/workspaces",
         "hyprland/window",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "hyprland/workspaces"
+        "clock",
+        "tray",
     ],
 
     // Modules Right    
@@ -43,10 +44,7 @@
         "bluetooth",
         "battery", 
         "network",
-        "group/tools",
-        "tray",
-        "custom/exit",
         "custom/notification",
-        "clock"
+        "custom/exit",
     ]
 }
