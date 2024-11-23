@@ -30,11 +30,18 @@ Software Requirements:
 - hyprlock
 - hypridle
 - hyprshade
+- swaync
 - rofi-wayland
 - networkmanager
 - bluez
 - fcitx5
+- cliphist
 
 Font requirements:
 - otf-fira-sans
 - otf-font-awesome
+
+Theme requirements:
+- bibata-cursor-theme-bin: the cursor theme
+- papirus-icon-theme
+- libadwaita

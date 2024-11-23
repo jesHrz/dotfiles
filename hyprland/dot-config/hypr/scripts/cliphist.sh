@@ -9,7 +9,7 @@
 theme="$HOME/.config/rofi/styles/style-launcher.rasi"
 
 case $1 in
-    d) cliphist list | rofi -dmenu -replace -them ${theme} | cliphist delete
+    d) cliphist list | rofi -dmenu -replace -theme ${theme} | cliphist delete
        ;;
 
     w) if [ `echo -e "Clear\nCancel" | rofi -dmenu -theme ${theme}` == "Clear" ] ; then

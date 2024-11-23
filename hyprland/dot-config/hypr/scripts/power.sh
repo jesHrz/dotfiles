@@ -58,7 +58,7 @@ run_rofi() {
 	echo -e "$lock\n$logout\n$shutdown\n$reboot\n$suspend" | rofi_cmd
 }
 
-__poweroff() {
+__shutdown() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
 		echo ":: Shutdown"

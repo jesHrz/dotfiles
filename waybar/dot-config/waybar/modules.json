@@ -11,27 +11,20 @@
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activatte",
-    //"active-only": false,
-    //"all-outputs": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "active": "",
-      "default": ""
-    },
-    // "persistent-workspaces": {
-    //   "*": 5
-    // }
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    // "format-icons": {
+    //   "active": "",
+    //   "default": ""
+    // },
+    "persistent-workspaces": {
+      "*": 5
+    }
   },
 
   // Hyprland Window
   "hyprland/window": {
-    "rewrite": {
-      "(.*) - Brave": "$1",
-      "(.*) - Chromium": "$1",
-      "(.*) - Brave Search": "$1",
-      "(.*) - Outlook": "$1",
-      "(.*) Microsoft Teams": "$1"
-    },
     "separate-outputs": true
   },
 
@@ -40,7 +33,7 @@
     "format": ""
   },
 
-    // Tools
+  // Tools
   "custom/tools": {
     "format": "",
     "tooltip-format": "Tools"
@@ -53,23 +46,6 @@
     "on-click-right": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh d",
     "on-click-middle": "sleep 0.1 && ~/.config/hypr/scripts/cliphist.sh w",
     "tooltip-format": "Clipboard Manager"
-  },
-
-  // Keybindings
-  "custom/keybindings": {
-    "format": "",
-    "on-click": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip": false
-  },
-
-  // Rofi Application Launcher
-  "custom/appmenu": {
-    // START APPS LABEL
-    "format": "Apps",
-    // END APPS LABEL
-    "on-click": "sleep 0.2;pkill rofi || rofi -show drun -replace",
-    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
   },
 
   // Power Menu
@@ -147,7 +123,7 @@
     "drawer": {
       "transition-duration": 300,
       "children-class": "not-memory",
-      "transition-left-to-right": true
+      "transition-left-to-right": false
     },
     "modules": [
       "custom/tools",
@@ -206,7 +182,7 @@
       "car": " ",
       "default": ["", "", ""]
     },
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
   },
 
   // Bluetooth
@@ -219,16 +195,9 @@
     "format-no-controller": ""
   },
 
-  // Other
-  "user": {
-    "format": "{user}",
-    "interval": 60,
-    "icon": false
-  },
-
   // backlight:
-  "backlight": {
-    "format": "{icon} {percent}%",
+  "custom/brightness": {
+    "format": "{icon} {percentage}%",
     "format-icons": [
       "",
       "",
@@ -246,7 +215,14 @@
       "",
       ""
     ],
-    "scroll-step": 1
+    "return-type": "json",
+    "exec-on-event": false,
+    "exec": "$HOME/.config/hypr/scripts/brightness.sh",
+    "on-click": "$HOME/.config/hypr/scripts/brightness.sh + 10",
+    "on-click-right": "$HOME/.config/hypr/scripts/brightness.sh - 10",
+    "interval": 1,
+    "tooltip": false,
+    // "scroll-step": 1
   },
 
   "custom/notification": {

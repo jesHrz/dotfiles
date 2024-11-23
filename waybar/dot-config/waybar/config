@@ -25,25 +25,27 @@
 
     // Modules Left
     "modules-left": [
-        "group/tools",
+        "tray",
         "hyprland/workspaces",
-        "hyprland/window",
         "custom/empty"
     ],
 
     // Modules Center
     "modules-center": [
-        "clock",
-        "tray",
+        "hyprland/window",
     ],
 
     // Modules Right    
     "modules-right": [
         "pulseaudio",
-        "backlight",
+        "custom/brightness",
         "bluetooth",
         "battery", 
         "network",
+        "clock",
+        "custom/cliphist",
+        "custom/hypridle",
+        "custom/hyprshade",
         "custom/notification",
         "custom/exit",
     ]
