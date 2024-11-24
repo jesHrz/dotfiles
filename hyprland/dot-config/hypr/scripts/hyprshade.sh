@@ -1,59 +1,51 @@
 #!/bin/bash
-#  _   _                      _               _      
-# | | | |_   _ _ __  _ __ ___| |__   __ _  __| | ___ 
-# | |_| | | | | '_ \| '__/ __| '_ \ / _` |/ _` |/ _ \
-# |  _  | |_| | |_) | |  \__ \ | | | (_| | (_| |  __/
-# |_| |_|\__, | .__/|_|  |___/_| |_|\__,_|\__,_|\___|
-#        |___/|_|                                    
-# 
+#  _    _                                           _   
+# | |  | |                                         | |  
+# | |__| |_   _ _ __  _ __ ___ _   _ _ __  ___  ___| |_ 
+# |  __  | | | | '_ \| '__/ __| | | | '_ \/ __|/ _ \ __|
+# | |  | | |_| | |_) | |  \__ \ |_| | | | \__ \  __/ |_ 
+# |_|  |_|\__, | .__/|_|  |___/\__,_|_| |_|___/\___|\__|
+#          __/ | |                                      
+#         |___/|_|            
+#
 
-hyprshadesettings="$HOME/.config/hypr/settings/hyprshade.sh"
+temperatures=(4000 4500 5000 5500 6000 6500)
 
-run_rofi() {
+dmenu() {
     theme="$HOME/.config/rofi/styles/style-launcher.rasi"
-    rofi -dmenu -replace -theme $theme -i -no-show-icons -l 4 -width 30 -p "Hyprshade"
+    rofi -dmenu -replace -theme $theme -i -no-show-icons -l ${#temperatures[@]} -width 30 -p "Hyprsunset"
 }
 
-enable_shade() {
-    # Toggle Hyprshade based on the selected filter
-    hyprshade_filter="blue-light-filter-50"
-
-    # Check if hyprshade.sh settings file exists and load
-    if [ -f $hyprshadesettings ] ;then
-        source $hyprshadesettings
-    fi
-
-    # Toggle Hyprshade
-    if [ "$hyprshade_filter" != "off" ] ;then
-        if [ -z $(hyprshade current) ] ;then
-            echo ":: hyprshade is not running"
-            hyprshade on $hyprshade_filter
-            notify-send "Hyprshade activated" "with $(hyprshade current)"
-            echo ":: hyprshade started with $(hyprshade current)"
-        else
-            notify-send "Hyprshade deactivated"
-            echo ":: Current hyprshade $(hyprshade current)"
-            echo ":: Switching hyprshade off"
-            hyprshade off
-        fi
-    else
-        hyprshade off
-        echo ":: hyprshade turned off"
-        notify-send "Hyprshade deactivated"
-    fi
-
+select_temperature() {
+    IFS=$'\n'
+    cmd=$(echo "${temperatures[*]}")
+    echo -n "$cmd" | dmenu
 }
 
-if [[ "$1" == "rofi" ]]; then
-    # Open rofi to select the Hyprshade filter for toggle
-    options="$(hyprshade ls)\nOff"
-    
-    # Open rofi
-    choice=$(echo -e "$options" | run_rofi) 
-    if [ ! -z $choice ] ;then
-        echo "hyprshade_filter=\"$choice\"" > $hyprshadesettings
-        enable_shade
-    fi
-else
-    enable_shade
+__notify() {
+    notify-send "$1" --app-name="Hyprsunset" --urgency=low
+}
+
+enable_sunset() {
+    hyprsunset --temperature $1 &
+    __notify "Enable Hyprsunset ${1}K"
+}
+
+disable_sunset() {
+    pkill hyprsunset
+    sleep 0.5s
+    __notify "Disable Hyprsunset"
+}
+
+toggle_sunset() {
+    pkill hyprsunset
+    sleep 0.5s
+    hyprsunset --temperature $1 &
+    __notify "Toggle Hyprsunset ${1}K"
+}
+
+temperature=$(select_temperature)
+if [ $temperature != "" ]; then
+    toggle_sunset $temperature
 fi
+

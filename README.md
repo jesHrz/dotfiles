@@ -25,11 +25,11 @@ yay -S ttf-meslo-nerd
 
 Software Requirements:
 - waybar
-- hyprland
+- hyprland > 0.45
 - hyprpaper
 - hyprlock
 - hypridle
-- hyprshade
+- hyprsunset
 - swaync
 - rofi-wayland
 - networkmanager

@@ -25,8 +25,8 @@ switcher:
   caption: 「方案选单」
   hotkeys:
     - F4
-    - Control+grave
-    - Control+Shift+grave
+    # - Control+grave
+    # - Control+Shift+grave
     # - Alt+grave
   save_options:  # 开关记忆（方案中的 switches），从方案选单（而非快捷键）切换时会记住的选项，需要记忆的开关不能设定 reset
     - ascii_punct
@@ -166,11 +166,11 @@ key_binder:
 
   bindings:
     # Tab / Shift+Tab 切换光标至下/上一个拼音
-    # - { when: composing, accept: Shift+Tab, send: Shift+Left }
-    # - { when: composing, accept: Tab, send: Shift+Right }
+    - { when: composing, accept: Shift+Tab, send: Shift+Left }
+    - { when: composing, accept: Tab, send: Shift+Right }
     # Tab / Shift+Tab 翻页
-    - { when: has_menu, accept: Shift+Tab, send: Page_Up }
-    - { when: has_menu, accept: Tab, send: Page_Down }
+    # - { when: has_menu, accept: Shift+Tab, send: Page_Up }
+    # - { when: has_menu, accept: Tab, send: Page_Down }
 
     # Option/Alt + ←/→ 切换光标至下/上一个拼音
     - { when: composing, accept: Alt+Left, send: Shift+Left }
