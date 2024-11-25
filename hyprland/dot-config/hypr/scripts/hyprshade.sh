@@ -38,14 +38,19 @@ disable_sunset() {
 }
 
 toggle_sunset() {
-    pkill hyprsunset
-    sleep 0.5s
-    hyprsunset --temperature $1 &
-    __notify "Toggle Hyprsunset ${1}K"
+    if pgrep -x "hyprsunset" > /dev/null; then
+        disable_sunset
+    else
+        enable_sunset $1
+    fi
 }
 
-temperature=$(select_temperature)
-if [ $temperature != "" ]; then
-    toggle_sunset $temperature
+if [ "$1" = "rofi" ]; then
+    temperature=$(select_temperature)
+    echo "$temperature"
+    if [ ! -z "$temperature" ]; then
+        enable_sunset $temperature
+    fi
+else
+    toggle_sunset 5000 
 fi
-

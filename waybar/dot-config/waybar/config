@@ -17,17 +17,14 @@
     "margin-left": 0,
     "margin-right": 0,    
     "spacing": 0,
-
-    // Load Modules
-    "include": [
-        "~/.config/waybar/modules.json"
-    ],
+    "height": 29,
 
     // Modules Left
     "modules-left": [
-        "tray",
+        "disk",
+        "cpu",
+        "memory",
         "hyprland/workspaces",
-        "custom/empty"
     ],
 
     // Modules Center
@@ -37,16 +34,193 @@
 
     // Modules Right    
     "modules-right": [
+        "tray",
         "pulseaudio",
+        "network",
         "custom/brightness",
         "bluetooth",
         "battery", 
-        "network",
         "clock",
-        "custom/cliphist",
         "custom/hypridle",
-        "custom/hyprshade",
         "custom/notification",
         "custom/exit",
-    ]
+    ],
+
+    // Workspaces
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "format": "{icon}",
+        "all-outputs": false,
+    },
+
+    // Hyprland Window
+    "hyprland/window": {
+        "separate-outputs": true
+    },
+
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "on-click": "~/.config/hypr/scripts/power.sh",
+        "tooltip-format": "Power Menu"
+    },
+
+    // Hypridle inhibitor
+    "custom/hypridle": {
+        "format": "",
+        "return-type": "json",
+        "escape": true,
+        "exec-on-event": true,
+        "interval": 60,
+        "exec": "~/.config/hypr/scripts/hypridle.sh status",
+        "on-click": "~/.config/hypr/scripts/hypridle.sh toggle",
+        "on-click-right": "hyprlock"
+    },
+
+	"disk":{
+		"format": "  {percentage_free}%",
+	},
+
+	"cpu": {
+		"format": "  {usage}%"
+	},
+
+	"memory": {
+		"format": "  {}%"
+	},
+
+    // Keyboard State
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+        "locked": "",
+        "unlocked": ""
+        }
+    },
+
+    // System tray
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    // Clock
+    "clock": {
+        // "format": "{:%Y-%m-%d %a %H:%M}",
+        "format": "📅 {:%Y-%m-%d  🕑%H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "",
+            "on-scroll"     : 1,
+            "on-click-left": "mode",
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{:%U}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+            "actions": {
+                "on-click-right": "mode",
+                "on-scroll-up": "shift_up",
+                "on-scroll-down": "shift_down"
+            }
+        }
+    },
+
+    // Network
+    "network": {
+		"format-wifi": "  {essid}: {ipaddr}/{cidr}",
+		"format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+		"format-disconnected": "⚠ Disconnected ",
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nup: {bandwidthUpBits} down: {bandwidthDownBits}",
+        "tooltip-format-disconnected": "⚠ Disconnected",
+        "on-click": "~/.config/hypr/settings/networkmanager.sh",
+        "on-click-right": "~/.config/hypr/scripts/nm-applet.sh toggle",
+    },
+
+    // Battery
+	"battery": {
+		"states": {
+			// "good": 95,
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "<span color='#ffffff'>{icon}</span>   {capacity}%",
+		"format-charging": "<span color='#e88939'> </span> {capacity}%{time}",
+		"format-plugged":  "<span color='#e88939'>{icon}  </span>   {capacity}%",
+//		"format-good": "", // An empty format will hide the module
+		"format-discharging": "<span color='#e88939'>{icon}</span>   {capacity}% ({time})",
+		"format-icons": ["", "", "", "", ""]
+	},
+
+    // Pulseaudio
+    "pulseaudio": {
+        "format": "{icon}  {volume}% {format_source}",
+		"format-bluetooth": "{icon} {volume}% {format_source}",
+		"format-bluetooth": "  {volume}% {format_source}",
+		"format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+    },
+
+    // Bluetooth
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-off": "",
+        "interval": 30,
+        "on-click": "blueman-manager",
+        "format-no-controller": ""
+    },
+
+    // backlight:
+    "custom/brightness": {
+        "format": "{icon}  {percentage}%",
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+        "return-type": "json",
+        "exec-on-event": false,
+        "exec": "$HOME/.config/hypr/scripts/brightness.sh",
+        "on-click": "$HOME/.config/hypr/scripts/brightness.sh + 10",
+        "on-click-right": "$HOME/.config/hypr/scripts/brightness.sh - 10",
+        "interval": 1,
+        "tooltip": false,
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
 }
