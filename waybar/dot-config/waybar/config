@@ -21,6 +21,7 @@
 
     // Modules Left
     "modules-left": [
+        "tray",
         "disk",
         "cpu",
         "memory",
@@ -34,14 +35,12 @@
 
     // Modules Right    
     "modules-right": [
-        "tray",
         "pulseaudio",
         "network",
-        "custom/brightness",
         "bluetooth",
+        "custom/brightness",
         "battery", 
         "clock",
-        "custom/hypridle",
         "custom/notification",
         "custom/exit",
     ],
@@ -58,25 +57,6 @@
         "separate-outputs": true
     },
 
-    // Power Menu
-    "custom/exit": {
-        "format": "",
-        "on-click": "~/.config/hypr/scripts/power.sh",
-        "tooltip-format": "Power Menu"
-    },
-
-    // Hypridle inhibitor
-    "custom/hypridle": {
-        "format": "",
-        "return-type": "json",
-        "escape": true,
-        "exec-on-event": true,
-        "interval": 60,
-        "exec": "~/.config/hypr/scripts/hypridle.sh status",
-        "on-click": "~/.config/hypr/scripts/hypridle.sh toggle",
-        "on-click-right": "hyprlock"
-    },
-
 	"disk":{
 		"format": "  {percentage_free}%",
 	},
@@ -89,17 +69,6 @@
 		"format": "  {}%"
 	},
 
-    // Keyboard State
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-        "locked": "",
-        "unlocked": ""
-        }
-    },
-
     // System tray
     "tray": {
         "icon-size": 21,
@@ -108,8 +77,7 @@
 
     // Clock
     "clock": {
-        // "format": "{:%Y-%m-%d %a %H:%M}",
-        "format": "📅 {:%Y-%m-%d  🕑%H:%M}",
+        "format": "📅 {:%Y-%m-%d %a 🕑 %H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode"          : "year",
@@ -134,12 +102,12 @@
 
     // Network
     "network": {
-		"format-wifi": "  {essid}: {ipaddr}/{cidr}",
-		"format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-		"format-disconnected": "⚠ Disconnected ",
-        "tooltip-format": " {ifname} via {gwaddri}",
-        "tooltip-format-wifi": "  {ifname} @ {essid}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-        "tooltip-format-ethernet": " {ifname}\nup: {bandwidthUpBits} down: {bandwidthDownBits}",
+		"format-wifi": "  {essid}",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "⚠ Disconnected",
+        "tooltip-format": " {ifname} via {gwaddri}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "  {ifname} @ {essid}: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}: {ipaddr}/{cidr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "⚠ Disconnected",
         "on-click": "~/.config/hypr/settings/networkmanager.sh",
         "on-click-right": "~/.config/hypr/scripts/nm-applet.sh toggle",
@@ -162,11 +130,11 @@
 
     // Pulseaudio
     "pulseaudio": {
-        "format": "{icon}  {volume}% {format_source}",
-		"format-bluetooth": "{icon} {volume}% {format_source}",
-		"format-bluetooth": "  {volume}% {format_source}",
-		"format-muted": " {format_source}",
-        "format-source": " {volume}%",
+        "format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-bluetooth-muted": "  {volume}%",
+		"format-muted": "  {volume}%",
+        "format-source": "",
         "format-source-muted": "",
         "format-icons": {
             "headphone": " ",
@@ -223,4 +191,12 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
+
+    // Power Menu
+    "custom/exit": {
+        "format": "",
+        "on-click": "~/.config/hypr/scripts/power.sh",
+        "tooltip-format": "Power Menu"
+    },
+
 }
