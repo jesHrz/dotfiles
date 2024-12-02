@@ -40,8 +40,22 @@ Software Requirements:
 Font requirements:
 - otf-fira-sans
 - otf-font-awesome
+- ttf-lxgw-wenkai-screen
+- adobe-source-code-pro
+
+## Themes
 
 Theme requirements:
 - bibata-cursor-theme-bin: the cursor theme
-- papirus-icon-theme
-- libadwaita
+- papirus-icon-theme: the icon theme
+- arc-gtk-theme: the gtk interface theme
+
+Note that, to apply the gtk theme (including the icon theme), modify the gtk configuration file (.gtk-2.0, gtk-3.0/settings.ini, and gtk-4.0/settings.ini)
+If it does not work, try `gsettings set org.gnome.desktop.interface gtk-theme "Arc-Dark"` and `gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"`
+
+## Fcitx5
+
+Use `fcitx5-rime` as chinese addon and `rime-frost` as dictionary.
+
+Fcitx5 theme
+- fcitx5-material-color: the fcitx5 theme

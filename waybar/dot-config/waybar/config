@@ -42,7 +42,6 @@
         "battery", 
         "clock",
         "custom/notification",
-        "custom/exit",
     ],
 
     // Workspaces

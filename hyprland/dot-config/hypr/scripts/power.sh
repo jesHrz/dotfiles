@@ -27,15 +27,19 @@ yes='Yes'
 no='No'
 
 # Rofi CMD
-rofi_cmd() {
-	rofi -dmenu \
-		-p "" \
-		-click-to-exit \
-		-theme ${dir}/${theme}.rasi
+power_dmenu() {
+	# rofi -dmenu \
+	# 	-p "" \
+	# 	-click-to-exit \
+	# 	-theme ${dir}/${theme}.rasi
+	wofi --show dmenu \
+		--location=3 \
+		--hide_search \
+		--single_click
 }
 
 # Confirmation CMD
-confirm_cmd() {
+confirm_dmenu() {
 	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 250px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
@@ -49,12 +53,12 @@ confirm_cmd() {
 
 # Ask for confirmation
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+	echo -e "$yes\n$no" | confirm_dmenu
 }
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$logout\n$shutdown\n$reboot\n$suspend" | rofi_cmd
+	echo -e "$lock\n$logout\n$shutdown\n$reboot\n$suspend" | power_dmenu
 }
 
 __shutdown() {

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-bus=2
+bus=5
 
 set_brightness() {
   ddcutil --noverify --bus $bus setvcp 10 $@ 2>/dev/null

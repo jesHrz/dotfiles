@@ -6,17 +6,21 @@
 #  \____|_|_| .__/|_| |_|_|___/\__| 
 #           |_|                     
 #  
-theme="$HOME/.config/rofi/styles/style-launcher.rasi"
+
+dmenu() {
+    # rofi -dmenu -theme "$HOME/.config/rofi/styles/style-launcher.rasi"
+    wofi --dmenu --prompt=clipboard-history -i $@
+}
 
 case $1 in
-    d) cliphist list | rofi -dmenu -replace -theme ${theme} | cliphist delete
+    d) cliphist list | dmenu | cliphist delete
        ;;
 
-    w) if [ `echo -e "Clear\nCancel" | rofi -dmenu -theme ${theme}` == "Clear" ] ; then
+    w) if [ `echo -e "Clear\nCancel" | dmenu` == "Clear" ] ; then
             cliphist wipe
        fi
        ;;
 
-    *) cliphist list | rofi -dmenu -replace -theme ${theme} | cliphist decode | wl-copy
+    *) cliphist list | dmenu | cliphist decode | wl-copy
        ;;
 esac
