@@ -11,21 +11,15 @@
 {
     // General Settings
     "layer": "top",
-    "margin-top": 0,
-    "margin-bottom": 0,
-    "layer": "top",
-    "margin-left": 0,
-    "margin-right": 0,    
-    "spacing": 0,
-    "height": 29,
+    "spacing": 4,
 
     // Modules Left
     "modules-left": [
-        "tray",
-        "disk",
-        "cpu",
-        "memory",
+        // "disk",
+        // "cpu",
+        // "memory",
         "hyprland/workspaces",
+        "mpris",
     ],
 
     // Modules Center
@@ -35,13 +29,14 @@
 
     // Modules Right    
     "modules-right": [
+        "privacy",
         "pulseaudio",
         "network",
         "bluetooth",
-        "custom/brightness",
+        // "custom/brightness",
         "battery", 
         "clock",
-        "custom/notification",
+        "tray",
     ],
 
     // Workspaces
@@ -53,7 +48,8 @@
 
     // Hyprland Window
     "hyprland/window": {
-        "separate-outputs": true
+        "separate-outputs": true,
+        "icon": true,
     },
 
 	"disk":{
@@ -122,19 +118,18 @@
 		"format": "<span color='#ffffff'>{icon}</span>   {capacity}%",
 		"format-charging": "<span color='#e88939'> </span> {capacity}%{time}",
 		"format-plugged":  "<span color='#e88939'>{icon}  </span>   {capacity}%",
-//		"format-good": "", // An empty format will hide the module
 		"format-discharging": "<span color='#e88939'>{icon}</span>   {capacity}% ({time})",
 		"format-icons": ["", "", "", "", ""]
 	},
 
     // Pulseaudio
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-		"format-bluetooth": "{icon} {volume}%",
-		"format-bluetooth-muted": "  {volume}%",
-		"format-muted": "  {volume}%",
-        "format-source": "",
-        "format-source-muted": "",
+        "format": "{icon} {volume}% {format_source}",
+		"format-bluetooth": "{icon} {volume}% {format_source}",
+		"format-bluetooth-muted": "  {volume}% {format_source}",
+		"format-muted": "  {volume}% {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
         "format-icons": {
             "headphone": " ",
             "hands-free": " ",
@@ -198,4 +193,67 @@
         "tooltip-format": "Power Menu"
     },
 
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "mpris": {
+	    "format": "{player_icon}{status_icon} {dynamic}",
+	    "format-paused": "{player_icon}{status_icon} <i>{dynamic}</i>",
+	    "format-stopped": "{player_icon}{status_icon} <i>{dynamic}</i>",
+	    "status-icons": {
+		    "playing": "⏸",
+		    "paused": "▶",
+		    "stopped": "▶",
+	    },
+	    "dynamic-order": ["title", "artist"],
+	    // "ignored-players": ["firefox"]
+    },
+
+    //The privacy module displays if any application is capturing audio, sharing the screen or playing audio.
+    "privacy": {
+    	"icon-spacing": 4,
+    	"icon-size": 18,
+    	"transition-duration": 250,
+    	"modules": [
+    		{
+    			"type": "screenshare",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		},
+    		{
+    			"type": "audio-out",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		},
+    		{
+    			"type": "audio-in",
+    			"tooltip": true,
+    			"tooltip-icon-size": 24
+    		}
+    	]
+    },
 }

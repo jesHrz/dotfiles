@@ -1,23 +1,22 @@
 * {
     font-family: "Fira Sans Semibold", "LXGW WenKai GB Screen", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 18px;
+    /* fix the height for some cjk fonts for firefox sway/window */
+    min-height: 28px;
 }
 
-window#waybar {
-    background: rgba(40, 42, 54, 0.75);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 1px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-.modules-left {
-    padding-left: 10px;
-}
-
-.modules-right {
-    padding-right: 10px;
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #bbccdd;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -30,94 +29,77 @@ window#waybar.hidden {
     margin-right: 0;
 }
 
-#workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
+window#waybar {
+    background: rgba(26, 26, 26, 0.70);
+    border-bottom: 2px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each workspace name */
-    border: none;
-    border-radius: 0;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    border-radius: 0px;
+    color: #ffffff;
 }
 
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: #6f3f89;
+    box-shadow: inset 0 -2px #bbccdd;
+}
+
+/* inactive workspace visible on another monitor*/
+#workspaces button.visible:not(.focused) {
+    background-color: #005577;
+    box-shadow: inset 0 -2px #bbccdd;
 }
 
 #workspaces button.urgent {
     background-color: #f53c3c;
 }
 
-#workspaces button.active {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
-}
-
 #mode {
     background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 
-#custom-media,
-#clock,
-#battery,
 #cpu,
 #memory,
 #disk,
 #temperature,
 #custom-brightness,
 #backlight,
+#clock,
+#battery,
 #bluetooth,
 #network,
 #pulseaudio,
-#tray,
-#mode,
-#mpd {
-    margin: 0px 5px;
-    padding: 2px 5px;
+#tray {
+    margin: 0px;
+    padding: 2px 4px;
     color: #ffffff;
-    box-shadow: inset 0 -3px #ffffff;
+    box-shadow: inset 0 -2px #ffffff;
 }
 
 #custom-exit,
 #custom-notification {
-    margin: 0px 5px;
-    padding: 2px 5px;
-    color: #ffffff;
-}
-
-#window,
-#workspaces {
-    margin: 0px 2px;
+    margin: 0px;
     padding: 0px 2px;
     color: #ffffff;
 }
 
-/* #tray { */
-/*     background-color: #ffffff; */
-/* } */
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #f53c3c;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#mpd,
+#mpris,
+#privacy,
+#window,
+#workspaces {
+    margin: 0px;
+    padding: 0px 2px;
+    color: #ffffff;
 }
 
 #battery.critical:not(.charging) {
@@ -130,17 +112,8 @@ window#waybar.hidden {
     animation-direction: alternate;
 }
 
-label:focus {
-    background-color: #000000;
-}
-
 #network.disconnected {
     background-color: #f53c3c;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
 }
 
 #mpd.disconnected {
@@ -155,3 +128,21 @@ label:focus {
     background-color: #51a37a;
 }
 
+#privacy-item {
+    margin: 0px;
+    padding: 2px 3px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #0f914e;
+}
+
+#privacy-item.audio-in {
+    background-color: #9c1a3b;
+}
+
+#privacy-item.audio-out {
+    background-color: #e6da00;
+    color: #191919;
+}

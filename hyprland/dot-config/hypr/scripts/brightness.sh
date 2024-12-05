@@ -2,36 +2,29 @@
 
 bus=5
 
-set_brightness() {
-  ddcutil --noverify --bus $bus setvcp 10 $@ 2>/dev/null
-}
-
-get_brightness() {
-  ddcutil --noverify --bus $bus -t getvcp 10 2>/dev/null
-}
-
-# takes ddcutil commandline as arguments
 print_brightness() {
-    if brightness=$(get_brightness); then
-        brightness=$(echo "$brightness" | cut -d ' ' -f 4)
-    else
-        brightness=-1
+  output=$(ddcutil --noverify --bus $bus -t getvcp 10 2>/dev/null) 
+  if [ $? -eq 0 ]; then
+    trimmed=${output#* * * }
+    value=${trimmed%% *}
+
+    cached_value=$(cat /tmp/waybar_ddcutil_value 2>/dev/null)
+    if [ "$cached_value" != "$value" ]; then
+      echo $value > /tmp/waybar_ddcutil_value
     fi
-    echo '{ "percentage":' "$brightness" '}'
+    echo {\"percentage\": $value}
+  else
+    echo {\"percentage\": $(cat /tmp/waybar_ddcutil_value 2>/dev/null || echo 0)}
+  fi
 }
 
 command=$1
 step=$2
 case $command in
   + | -)
-    set_brightness $command $step
+    ddcutil --noverify --bus $bus setvcp 10 $command $step 2>/dev/null
     ;;
-  max)
-    set_brightness $command 100
-    ;;
-  min)
-    set_brightness $command 0
+  *)
+    print_brightness
     ;;
 esac
-
-print_brightness
