@@ -11,7 +11,7 @@
 {
     // General Settings
     "layer": "top",
-    "spacing": 4,
+    "spacing": 6,
 
     // Modules Left
     "modules-left": [
@@ -244,11 +244,11 @@
     			"tooltip": true,
     			"tooltip-icon-size": 24
     		},
-    		{
-    			"type": "audio-out",
-    			"tooltip": true,
-    			"tooltip-icon-size": 24
-    		},
+    		// {
+    		// 	"type": "audio-out",
+    		// 	"tooltip": true,
+    		// 	"tooltip-icon-size": 24
+    		// },
     		{
     			"type": "audio-in",
     			"tooltip": true,
