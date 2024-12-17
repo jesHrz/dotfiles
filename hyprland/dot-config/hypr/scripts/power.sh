@@ -34,8 +34,7 @@ power_dmenu() {
 	# 	-theme ${dir}/${theme}.rasi
 	wofi --show dmenu \
 		--location=3 \
-		--hide_search \
-		--single_click
+		--hide_search
 }
 
 # Confirmation CMD
@@ -53,7 +52,8 @@ confirm_dmenu() {
 
 # Ask for confirmation
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_dmenu
+	# echo -e "$yes\n$no" | confirm_dmenu
+	echo -e "$yes"
 }
 
 # Pass variables to rofi dmenu

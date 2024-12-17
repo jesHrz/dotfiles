@@ -30,7 +30,7 @@ button:hover {
 }
 
 window#waybar {
-    background: rgba(26, 26, 26, 0.70);
+    background: rgba(26, 26, 26, 0.80);
     border-bottom: 2px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;

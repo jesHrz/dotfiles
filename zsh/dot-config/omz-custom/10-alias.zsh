@@ -18,4 +18,9 @@ fi
 
 if which bat > /dev/null 2>&1; then
   alias cat="bat"
+  export BAT_THEME="Catppuccin Mocha"
+fi
+
+if [ $TERM = "xterm-kitty" ]; then
+  alias ksh="kitten ssh"
 fi

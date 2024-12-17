@@ -10,7 +10,8 @@
 //
 {
     // General Settings
-    "layer": "top",
+    "layer": "bottom",
+    "position": "top",
     "spacing": 6,
 
     // Modules Left
@@ -37,6 +38,7 @@
         "battery", 
         "clock",
         "tray",
+        "custom/exit",
     ],
 
     // Workspaces
