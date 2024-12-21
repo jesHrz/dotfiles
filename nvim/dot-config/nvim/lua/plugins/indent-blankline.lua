@@ -4,12 +4,16 @@ return {
     main = "ibl",
     ---@module "ibl"
     ---@type ibl.config
-    opts = {}
-  },
-  {
-    "snacks.nvim",
     opts = {
-      indent = { enabled = false },
+      scope = { show_start = true, show_end = false },
+    },
+    specs = {
+      {
+        "snacks.nvim",
+        opts = {
+          indent = { enabled = false },
+        },
+      },
     },
   },
 }
