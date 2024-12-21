@@ -6,7 +6,7 @@ end
 return {
   "hrsh7th/nvim-cmp",
   version = false, -- last release is way too old
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp", lazy = true },
     { "hrsh7th/cmp-buffer", lazy = true },
@@ -14,64 +14,65 @@ return {
   },
   opts_extend = { "sources" },
   opts = function()
-    vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")
     local defaults = require("cmp.config.default")()
-    local auto_select = true
+    local auto_select = false
     return {
       auto_brackets = {}, -- configure any filetype to auto add brackets
       completion = {
         completeopt = "menu,menuone,noinsert" .. (auto_select and "" or ",noselect"),
       },
-      preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
+      preselect = (auto_select and cmp.PreselectMode.Item) or cmp.PreselectMode.None,
       mapping = {
         ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ["<C-P>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_prev_item()
-          else
-            cmp.complete()
-          end
-        end),
-        ["<C-N>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_next_item()
-          else
-            cmp.complete()
-          end
-        end),
-
-        ["<C-K>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        ["<C-J>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-        ["<C-U>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-D>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.abort()
-          else
-            cmp.mapping.complete()
-          end
-        end, { "i", "c" }),
         ["<C-Y>"] = cmp.config.disable,
-        ["<C-E>"] = cmp.mapping(cmp.mapping.abort(), { "i", "c" }),
-        ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ select = false }), { "i", "c" }),
+        ["<C-E>"] = cmp.abort,
+        ["<C-Space>"] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.close()
+          else
+            cmp.complete()
+          end
+        end),
+        ["<CR>"] = cmp.mapping({
+          i = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+              cmp.confirm({ behavior = cmp.ConfirmBehavior.Repalce, select = false })
+            else
+              fallback()
+            end
+          end,
+          s = cmp.confirm({ select = true }),
+          c = cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item()
+            if #cmp.get_entries() == 1 then
+              cmp.confirm({ select = true })
+            else
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            end
           elseif vim.api.nvim_get_mode().mode ~= "c" and vim.snippet and vim.snippet.active({ direction = 1 }) then
             vim.schedule(function()
               vim.snippet.jump(1)
             end)
           elseif has_words_before() then
             cmp.complete()
+            if #cmp.get_entries() == 1 then
+              cmp.confirm({ select = true })
+            end
           else
             fallback()
           end
         end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_prev_item()
+            if #cmp.get_entries() == 1 then
+              cmp.confirm({ select = true })
+            else
+              cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+            end
           elseif vim.api.nvim_get_mode().mode ~= "c" and vim.snippet and vim.snippet.active({ direction = -1 }) then
             vim.schedule(function()
               vim.snippet.jump(-1)
@@ -85,7 +86,6 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },
-      }, {
         { name = "buffer" },
       }),
       formatting = {
@@ -108,11 +108,6 @@ return {
 
           return item
         end,
-      },
-      experimental = {
-        ghost_text = {
-          hl_group = "CmpGhostText",
-        },
       },
       sorting = defaults.sorting,
     }

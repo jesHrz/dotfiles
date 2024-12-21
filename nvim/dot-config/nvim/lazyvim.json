@@ -2,6 +2,7 @@
   "extras": [
     "lazyvim.plugins.extras.coding.luasnip",
     "lazyvim.plugins.extras.coding.nvim-cmp",
+    "lazyvim.plugins.extras.editor.fzf",
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.python",
     "lazyvim.plugins.extras.lang.rust",

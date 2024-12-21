@@ -5,6 +5,7 @@ return {
       "clangd",
       "rust-analyzer",
       "pyright",
+      "autopep8",
       "bash-language-server",
     },
   },
