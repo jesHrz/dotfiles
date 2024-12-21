@@ -1,4 +1,4 @@
-alias zshconfig="vim $HOME/.zshrc"
+alias zshconfig="${EDITOR-"vim"} $HOME/.zshrc"
 
 if which nvim > /dev/null 2>&1; then
   alias vim="nvim"
