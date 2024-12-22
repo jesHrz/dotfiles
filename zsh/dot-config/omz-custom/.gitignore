@@ -1,4 +1,4 @@
-local/
-plugins/
+local/*
+plugins/*
 !local/.gitkeep
 !plugins/.gitkeep
