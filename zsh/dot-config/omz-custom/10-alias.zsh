@@ -21,6 +21,17 @@ if cmd_exists bat; then
   export BAT_THEME="Catppuccin Mocha"
 fi
 
+if cmd_exists yazi; then
+  function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+  }
+fi
+
 if [ $TERM = "xterm-kitty" ]; then
   alias ksh="kitten ssh"
 fi
