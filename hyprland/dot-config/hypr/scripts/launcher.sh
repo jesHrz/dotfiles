@@ -11,13 +11,13 @@
 ## style-6     style-7     style-8     style-9     style-10
 ## style-11    style-12    style-13    style-14    style-15
 
-# dir="$HOME/.config/rofi/styles"
-# theme='style-launcher'
+dir="$HOME/.config/rofi/styles"
+theme='style-launcher'
 
-## Run
-# rofi \
-#     -show drun \
-#     -theme ${dir}/${theme}.rasi \
-#     "$@"
+# Run
+rofi \
+    -show drun \
+    -theme ${dir}/${theme}.rasi \
+    "$@"
 
-wofi --show drun --prompt="Launch App" "$@"
+# wofi --show drun --prompt="Launch App" "$@"

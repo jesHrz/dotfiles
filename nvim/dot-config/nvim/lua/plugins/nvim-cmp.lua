@@ -83,9 +83,10 @@ return {
         end, { "i", "s" }),
       },
       sources = cmp.config.sources({
+        { name = "lazydev" },
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "path" },
+      }, {
         { name = "buffer" },
       }),
       formatting = {
@@ -112,5 +113,10 @@ return {
       sorting = defaults.sorting,
     }
   end,
+  experimental = {
+    ghost_text = vim.g.ai_cmp and {
+      hl_group = "CmpGhostText",
+    } or false,
+  },
   main = "lazyvim.util.cmp",
 }

@@ -8,8 +8,8 @@
 #  
 
 dmenu() {
-    # rofi -dmenu -theme "$HOME/.config/rofi/styles/style-launcher.rasi"
-    wofi --dmenu --prompt=clipboard-history -i $@
+    rofi -dmenu -p "Cliphist" -theme "$HOME/.config/rofi/styles/style-launcher.rasi"
+    # wofi --dmenu --prompt=clipboard-history -i $@
 }
 
 case $1 in
