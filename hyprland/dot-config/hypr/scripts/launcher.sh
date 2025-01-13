@@ -16,8 +16,8 @@ theme='style-launcher'
 
 # Run
 rofi \
-    -show drun \
-    -theme ${dir}/${theme}.rasi \
-    "$@"
+  -show drun \
+  -theme ${dir}/${theme}.rasi \
+  "$@"
 
 # wofi --show drun --prompt="Launch App" "$@"

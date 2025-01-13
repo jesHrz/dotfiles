@@ -8,9 +8,6 @@ vim.g.autoformat = false
 -- Disable all snacks animations
 vim.g.snacks_animate = false
 
--- Disable AI completion
-vim.g.ai_cmp = false
-
 -- 设置 visual 模式下选中的背景高亮色
 vim.cmd("highlight Visual guibg=#135564")
 -- 设置光标的颜色默认为拉姆的发色

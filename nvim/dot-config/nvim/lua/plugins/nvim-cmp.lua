@@ -83,7 +83,7 @@ return {
         end, { "i", "s" }),
       },
       sources = cmp.config.sources({
-        { name = "lazydev" },
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "path" },
       }, {
