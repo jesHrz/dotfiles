@@ -30,3 +30,8 @@ opacity = 0.9
 
 padding = { x = 2 }
 
+[keyboard]
+bindings = [
+  # fix ctrl+/ 
+  { key = "Slash", mods = "Control", chars = "\u001f" }
+]
