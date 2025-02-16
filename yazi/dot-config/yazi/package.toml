@@ -1,5 +1,34 @@
-[plugin]
-deps = [{ use = "yazi-rs/plugins:full-border", rev = "7afba3a" }, { use = "yazi-rs/plugins:max-preview", rev = "7afba3a" }, { use = "yazi-rs/plugins:smart-enter", rev = "7afba3a" }, { use = "KKV9/compress", rev = "60b24af" }, { use = "TD-Sky/sudo", rev = "a8287ea" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "7afba3a"
+hash = "3a73613fc702a5f8369791b3401f52f1"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "8458d25" }, { use = "yazi-rs/flavors:catppuccin-latte", rev = "8458d25" }]
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "7afba3a"
+hash = "9bc26d10d2f6e2aa93b10905b1b76979"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "7afba3a"
+hash = "c1a2739e9ef2d837030ccb4267be3ed1"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "60b24af"
+hash = "ee025be766240cc98e671754ac836da3"
+
+[[plugin.deps]]
+use = "TD-Sky/sudo"
+rev = "a8287ea"
+hash = "17e712ced895143bab875643c8913de"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "8458d25"
+hash = "44ab3265147788a4e780b2060341d65e"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "8458d25"
+hash = "ecbc48cd7dfbf65eddb7b4d8c093ae69"
