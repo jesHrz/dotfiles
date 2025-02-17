@@ -25,7 +25,7 @@ style = "Regular"
 
 [window]
 decorations = "Transparent"
-blur = true
+blur = false
 opacity = 0.9
 
 padding = { x = 2 }

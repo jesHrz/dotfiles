@@ -18,7 +18,6 @@ fi
 
 if cmd_exists bat; then
   alias cat="bat"
-  export BAT_THEME="Catppuccin Mocha"
 fi
 
 if cmd_exists yazi; then
