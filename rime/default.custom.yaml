@@ -1,0 +1,8 @@
+patch:
+  schema_list:
+    - schema: flypy
+  menu/page_size: 5
+  key_binder/bindings/+:
+    # 翻页 [ ]
+    - { when: paging, accept: bracketleft, send: Page_Up }
+    - { when: has_menu, accept: bracketright, send: Page_Down }

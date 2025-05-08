@@ -13,7 +13,7 @@ if cmd_exists tmux; then
 fi
 
 if cmd_exists eza; then
-  alias ls="eza --icons"
+  alias ls="eza --icons=auto"
 fi
 
 if cmd_exists bat; then
