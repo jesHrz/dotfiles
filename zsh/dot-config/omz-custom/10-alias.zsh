@@ -31,6 +31,10 @@ if cmd_exists yazi; then
   }
 fi
 
+if cmd_exists zellij; then
+  alias zel="zellij attach -c"
+fi
+
 if [ $TERM = "xterm-kitty" ]; then
   alias ksh="kitten ssh"
 fi
