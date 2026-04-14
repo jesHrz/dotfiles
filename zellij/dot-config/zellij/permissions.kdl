@@ -1,0 +1,9 @@
+"https://github.com/b0o/zjstatus-hints/releases/latest/download/zjstatus-hints.wasm" {
+    MessageAndLaunchOtherPlugins
+    ReadApplicationState
+}
+"https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjstatus.wasm" {
+    ReadApplicationState
+    RunCommands
+    ChangeApplicationState
+}

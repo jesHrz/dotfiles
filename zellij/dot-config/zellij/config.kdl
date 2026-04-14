@@ -279,10 +279,10 @@ plugins {
 
     // User
     zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.22.0/zjstatus.wasm" {
-		format_left   "{mode} {tabs}"
-		format_center ""
-		format_right  "{pipe_zjstatus_hints}{datetime}#[bg=#6e5fb7,fg=#ffffff,bold] {session} "
-		format_space  ""
+		format_left   "#[bg=#080808]{mode} {tabs}"
+		format_center "#[bg=#080808]"
+		format_right  "#[bg=#080808]{pipe_zjstatus_hints}{datetime}{command_username}{command_hostname}"
+		format_space  "#[bg=#080808]"
 
 		pipe_zjstatus_hints_format "{output}"
 
@@ -293,27 +293,27 @@ plugins {
 
 		hide_frame_for_single_pane "false"
 
-		mode_locked      "#[bg=#6e5fb7,fg=#ffffff,bold] ❤ "
-		mode_normal      "#[bg=#aa87fe,fg=#3c01cd,bold] ❤ NORMAL "
-		mode_resize      "#[bg=#ff9969,fg=#7f3513,bold] ❤ RESIZE "
-		mode_pane        "#[bg=#9FFBB6,fg=#30563a,bold] ❤ PANE "
-		mode_move        "#[bg=#FFD896,fg=#905b00,bold] ❤ MOVE "
-		mode_tab         "#[bg=#80BDFF,fg=#0051a8,bold] ❤ TAB "
-		mode_scroll      "#[bg=#412da2,fg=#c9c0ff,bold] ❤ SCROLL "
-		mode_search      "#[bg=#e28e00,fg=#ffe9c4,bold] ❤ SEARCH "
-		mode_entersearch "#[bg=#e28e00,fg=#ffe9c4,bold] ❤ ENTER SEARCH "
-		mode_renametab   "#[bg=#0051a8,fg=#80BDFF,bold] ❤ RENAME TAB "
-		mode_renamepane  "#[bg=#30563a,fg=#9FFBB6,bold] ❤ RENAME PANE "
-		mode_session     "#[bg=#FF87A5,fg=#7d001f,bold] ❤ SESSION "
-		mode_tmux        "#[bg=#c9c0ff,fg=#412da2,bold] ❤ TMUX "
+		mode_locked      "#[bg=#6e5fb7,fg=#ffffff,bold] LOCKED "
+		mode_normal      "#[bg=#aa87fe,fg=#3c01cd,bold] NORMAL "
+		mode_resize      "#[bg=#ff9969,fg=#7f3513,bold] RESIZE "
+		mode_pane        "#[bg=#9FFBB6,fg=#30563a,bold] PANE "
+		mode_move        "#[bg=#FFD896,fg=#905b00,bold] MOVE "
+		mode_tab         "#[bg=#80BDFF,fg=#0051a8,bold] TAB "
+		mode_scroll      "#[bg=#412da2,fg=#c9c0ff,bold] SCROLL "
+		mode_search      "#[bg=#e28e00,fg=#ffe9c4,bold] SEARCH "
+		mode_entersearch "#[bg=#e28e00,fg=#ffe9c4,bold] ENTER SEARCH "
+		mode_renametab   "#[bg=#0051a8,fg=#80BDFF,bold] RENAME TAB "
+		mode_renamepane  "#[bg=#30563a,fg=#9FFBB6,bold] RENAME PANE "
+		mode_session     "#[bg=#FF87A5,fg=#7d001f,bold] SESSION "
+		mode_tmux        "#[bg=#c9c0ff,fg=#412da2,bold] TMUX "
 
-		tab_active              "#[bg=#9c73fe,fg=#f2ecff,bold] {index} {name} "
-		tab_active_fullscreen   "#[bg=#9c73fe,fg=#f2ecff,bold] {fullscreen_indicator} {index} {name} "
-		tab_active_sync         "#[bg=#9c73fe,fg=#f2ecff,bold] {sync_indicator} {index} {name} "
+		tab_active              "#[bg=#00afff,fg=#080808,bold] {index} {name} "
+		tab_active_fullscreen   "#[bg=#00afff,fg=#080808,bold] {fullscreen_indicator} {index} {name} "
+		tab_active_sync         "#[bg=#00afff,fg=#080808,bold] {sync_indicator} {index} {name} "
 
-		tab_normal              "#[fg=#7a6c94,bold] {index} {name} "
-		tab_normal_fullscreen   "#[fg=#7a6c94,bold] {fullscreen_indicator} {index} {name} "
-		tab_normal_sync         "#[fg=#7a6c94,bold] {sync_indicator} {index} {name} "
+		tab_normal              "#[bg=#080808,fg=#8a8a8a,bold] {index} {name} "
+		tab_normal_fullscreen   "#[bg=#080808,fg=#8a8a8a,bold] {fullscreen_indicator} {index} {name} "
+		tab_normal_sync         "#[bg=#080808,fg=#8a8a8a,bold] {sync_indicator} {index} {name} "
 
 		tab_separator " "
 
@@ -327,8 +327,18 @@ plugins {
 		tab_truncate_start_format "#[fg=#FFD080]  +{count}  "
 		tab_truncate_end_format   "#[fg=#FFD080]   +{count} "
 
-		datetime        "#[fg=#7a6c94,bold] {format} "
-		datetime_format "%H:%M"
+		command_username_command    "whoami"
+		command_username_format     "#[bg=#d70000,fg=#e4e4e4,bold] {stdout} "
+		command_username_interval   "0"
+		command_username_rendermode "static"
+
+		command_hostname_command    "hostname"
+		command_hostname_format     "#[bg=#e4e4e4,fg=#080808,bold] {stdout} "
+		command_hostname_interval   "0"
+		command_hostname_rendermode "static"
+
+		datetime        "#[bg=#080808,fg=#8a8a8a,bold] {format} "
+		datetime_format "%H:%M %b %-d"
 		datetime_timezone "Asia/Shanghai"
 	}
 	zjstatus-hints location="https://github.com/b0o/zjstatus-hints/releases/latest/download/zjstatus-hints.wasm" {
