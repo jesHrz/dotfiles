@@ -32,7 +32,7 @@ if cmd_exists yazi; then
 fi
 
 if cmd_exists zellij; then
-  alias zel="zellij attach -c"
+  alias zel="zellij attach"
 fi
 
 if [ $TERM = "xterm-kitty" ]; then
