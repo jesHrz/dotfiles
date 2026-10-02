@@ -31,8 +31,8 @@ if cmd_exists yazi; then
   }
 fi
 
-if cmd_exists zellij; then
-  alias zel="zellij attach"
+if cmd_exists zoxide; then
+  eval "$(zoxide init zsh)"
 fi
 
 if [ $TERM = "xterm-kitty" ]; then

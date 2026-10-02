@@ -5,7 +5,7 @@ Call `sudo` in yazi.
 ## Installation
 
 ```bash
-$ ya pack -a TD-Sky/sudo
+$ ya pkg add TD-Sky/sudo
 ```
 
 ## Requirements
@@ -17,12 +17,15 @@ $ ya pack -a TD-Sky/sudo
 - [x] copy files
 - [x] move files
 - [x] rename file
+- [x] bulk rename files
 - [x] trash files
 - [x] remove files
 - [x] create absolute-path symbolic links
 - [x] create relative-path symbolic links
+- [x] create hard links
 - [x] touch new file
 - [x] make new directory
+- [x] change files' mode bits
 
 > You can use [conceal](https://github.com/TD-Sky/conceal) to browse and restore trashed files
 
@@ -32,50 +35,62 @@ Here are my own keymap for reference only:
 
 ```toml
 # sudo cp/mv
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "p"]
-run = "plugin sudo --args='paste'"
+run = "plugin sudo -- paste"
 desc = "sudo paste"
 
 # sudo cp/mv --force
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "P"]
-run = "plugin sudo --args='paste -f'"
+run = "plugin sudo -- paste --force"
 desc = "sudo paste"
 
 # sudo mv
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "r"]
-run = "plugin sudo --args='rename'"
-desc = "sudo rename"
+run = "plugin sudo -- rename"
+desc = "sudo rename/bulk-rename"
 
 # sudo ln -s (absolute-path)
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "p", "l"]
-run = "plugin sudo --args='link'"
+run = "plugin sudo -- link"
 desc = "sudo link"
 
 # sudo ln -s (relative-path)
-[[manager.keymap]]
-on = ["R", "p", "L"]
-run = "plugin sudo --args='link -r'"
+[[mgr.prepend_keymap]]
+on = ["R", "p", "r"]
+run = "plugin sudo -- link --relative"
 desc = "sudo link relative path"
 
+# sudo ln
+[[mgr.prepend_keymap]]
+on = ["R", "p", "L"]
+run = "plugin sudo -- hardlink"
+desc = "sudo hardlink"
+
 # sudo touch/mkdir
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "a"]
-run = "plugin sudo --args='create'"
+run = "plugin sudo -- create"
 desc = "sudo create"
 
 # sudo trash
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "d"]
-run = "plugin sudo --args='remove'"
+run = "plugin sudo -- remove"
 desc = "sudo trash"
 
 # sudo delete
-[[manager.keymap]]
+[[mgr.prepend_keymap]]
 on = ["R", "D"]
-run = "plugin sudo --args='remove -P'"
+run = "plugin sudo -- remove --permanently"
 desc = "sudo delete"
+
+# sudo chmod
+[[mgr.prepend_keymap]]
+on = ["R", "m"]
+run = "plugin sudo -- chmod"
+desc = "sudo chmod"
 ```
