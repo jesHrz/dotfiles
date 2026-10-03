@@ -4,7 +4,8 @@ font-size = 14
 font-thicken = true
 
 # --- Theme and Colors ---
-theme = Catppuccin Mocha
+# theme = Catppuccin Mocha
+theme = Dark Modern
 
 # --- Window and Appearance ---
 macos-titlebar-style = transparent

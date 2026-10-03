@@ -48,6 +48,7 @@ brew "zoxide"
 cask "appcleaner"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+cask "font-hanamin"
 cask "font-meslo-lg-nerd-font"
 # Free and open-source media player
 cask "iina"

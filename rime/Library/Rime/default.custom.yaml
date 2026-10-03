@@ -1,6 +1,6 @@
 patch:
   schema_list:
-    - schema: flypy
+    - schema: moqi_wan_flypymo
   menu/page_size: 5
   key_binder/bindings/+:
     # 翻页 [ ]

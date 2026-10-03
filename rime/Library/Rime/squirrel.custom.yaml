@@ -1,0 +1,8 @@
+# Squirrel custom settings
+# encoding: utf-8
+
+patch:
+  # 主题选择
+  "style/color_scheme": google
+  "style/color_scheme_dark": win11dark
+  "style/font_face": "PingFang SC,HanaMinB,Arial Unuicode MS,Apple Color Emoji"
