@@ -1,0 +1,14 @@
+# 本地自定义配置；由 .gitignore 排除。
+patch:
+  "switches_engine/engine/translators/+":
+    - table_translator@personal_phrase
+
+  "phrase/personal_phrase":
+    dictionary: ""
+    user_dict: custom_phrase/personal.custom
+    db_class: stabledb
+    enable_completion: false
+    enable_sentence: false
+    initial_quality: 1000000
+
+  translator/enable_user_dict: true
